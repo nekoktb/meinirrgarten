@@ -6,8 +6,8 @@ package irrgarten;
 
 /**
  *
- * @author carlos
+ * @author nekok
  */
-public class mano {
+public class prueba69 {
     
 }
