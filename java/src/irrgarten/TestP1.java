@@ -9,5 +9,7 @@ package irrgarten;
  * @author nekok
  */
 public class TestP1 {
-    
+    public static void main() {
+        Weapon cachiporra = new Weapon(5.0f,5);
+    }
 }
