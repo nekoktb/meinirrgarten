@@ -13,9 +13,9 @@ import java.util.Random;
  */
 public class Dice {
     private static final int MAX_USES = 5; //número máximo de usos de armas y escudos
-    private static final double MAX_INTELLIGENCE = 10.0; //valor máximo para la inteligencia de jugadores y monstruos
-    private static final double MAX_STRENGTH = 10.0; //valor máximo para la fuerza de jugadores y monstruos
-    private static final double RESURRECT_PROB = 0.3; //probabilidad de que un jugador sea resucitado en cada turno
+    private static final float MAX_INTELLIGENCE = 10.0f; //valor máximo para la inteligencia de jugadores y monstruos
+    private static final float MAX_STRENGTH = 10.0f; //valor máximo para la fuerza de jugadores y monstruos
+    private static final float RESURRECT_PROB = 0.3f; //probabilidad de que un jugador sea resucitado en cada turno
     private static final int WEAPONS_REWARD = 2; //numero máximo de armas recibidas al ganar un combate
     private static final int SHIELDS_REWARD = 3; //numero máximo de escudos recibidos al ganar un combate
     private static final int HEALTH_REWARD = 5; //numero máximo de unidades de salud recibidas al ganar un combate
@@ -25,69 +25,61 @@ public class Dice {
     private static final Random generator = new Random(); 
     
     public static int randomPos(int max){
-        int a=1;
-        return a;
+        return (generator.nextInt(max));
     }
     
     public static int whoStarts(int nplayers){
-       int a=1;
-        return a;
+       return (generator.nextInt(nplayers));
     }
     
     public static float randomIntelligence(){
-        float a=1;
-        return a;
+        return (generator.nextFloat(MAX_INTELLIGENCE));
     }
     
     public static float randomStrength(){
-        int a=1;
-        return a;
+        return (generator.nextFloat(MAX_STRENGTH));
     }
     
     public static boolean resurrectPlayer(){
-        boolean a=false;
-        return a;
+        if (generator.nextFloat() < RESURRECT_PROB) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public static int weaponsReward(){
-        int a=1;
-        return a;
+        return (generator.nextInt(WEAPONS_REWARD+1));
     }
     
     public static int shieldsReward(){
-        int a=1;
-        return a;
+        return (generator.nextInt(SHIELDS_REWARD+1));
     }
     
     public static int healthReward(){
-        int a=1;
-        return a;
+        return (generator.nextInt(HEALTH_REWARD+1));
     }
     
     public static float weaponPower(){
-        float a=1;
-        return a;
+        return (generator.nextFloat(MAX_ATTACK));
     }
     
     public static float shieldPower(){
-        float a=1;
-        return a;
+        return (generator.nextFloat(MAX_SHIELD));
     }
     
     public static int usesLeft(){
-        int a=1;
-        return a;
+        return (generator.nextInt(MAX_USES+1));
     }
     
     public static float intensity(float competence){
-        float a=1;
-        return a;
+        return (generator.nextFloat(competence));
     }
     
     public static boolean discardElement(int usesLeft){
-        boolean a=false;
-        return a;
+        return generator.nextFloat() >= ((float)usesLeft/MAX_USES);
     }
-
+    
+    // ¿Que pasa si usesLeft > MAX_USES?
     
 }
