@@ -8,6 +8,6 @@ package irrgarten;
  *
  * @author nekok
  */
-public enum Direction {
+public enum Directions {
     
 }
