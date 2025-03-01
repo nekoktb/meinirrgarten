@@ -24,7 +24,47 @@ public class Dice {
     
     private static final Random generator = new Random(); 
     
+    public static int randomPos(int max){
+        
+    }
     
+    public static int whoStarts(int nplayers){
+       
+    }
     
+    public static float randomIntelligence(){
+        
+    }
+    public static float randomStrength(){
+        
+    }
+    public static boolean resurrectPlayer(){
+        
+    }
+    public static int weaponsReward(){
+        
+    }
+    public static int shieldsReward(){
+        
+    }
+    public static int healthReward(){
+        
+    }
+    public static float weaponPower(){
+        
+    }
+    public static float shieldPower(){
+        
+    }
+    public static int usesLeft(){
+        
+    }
+    public static float intensity(float competence){
+        
+    }
+    public static boolean discardElement(int usesLeft){
+        
+    }
+
     
 }
