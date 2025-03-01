@@ -9,5 +9,5 @@ package irrgarten;
  * @author nekok
  */
 public enum Orientation {
-    
+    VERTICAL, HORIZONTAL
 }
