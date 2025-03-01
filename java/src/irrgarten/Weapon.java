@@ -4,6 +4,7 @@
  */
 package irrgarten;
 
+
 /**
  *
  * @author nekok
@@ -29,5 +30,9 @@ public class Weapon {
     @Override // ?¿
     public String toString() {
         return ("W[" + power + ", " + uses + "]"); 
+    }
+    
+    public boolean discard() { // static? (es de clase/instancia...)
+        return (Dice.discardElement(uses));
     }
 }
