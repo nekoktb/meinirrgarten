@@ -23,11 +23,15 @@ public class Shield {
             return protection;
         } else {
             return 0;
-        }
+        }  
     }
     
     @Override // ?¿
     public String toString() {
         return ("S[" + protection + ", " + uses + "]"); 
+    }
+    
+    public boolean discard() { // static? (es de clase/instancia...)
+        return (Dice.discardElement(uses));
     }
 }
