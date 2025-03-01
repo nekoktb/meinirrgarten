@@ -25,45 +25,68 @@ public class Dice {
     private static final Random generator = new Random(); 
     
     public static int randomPos(int max){
-        
+        int a=1;
+        return a;
     }
     
     public static int whoStarts(int nplayers){
-       
+       int a=1;
+        return a;
     }
     
     public static float randomIntelligence(){
-        
+        float a=1;
+        return a;
     }
+    
     public static float randomStrength(){
-        
+        int a=1;
+        return a;
     }
+    
     public static boolean resurrectPlayer(){
-        
+        boolean a=false;
+        return a;
     }
+    
     public static int weaponsReward(){
-        
+        int a=1;
+        return a;
     }
+    
     public static int shieldsReward(){
-        
+        int a=1;
+        return a;
     }
+    
     public static int healthReward(){
-        
+        int a=1;
+        return a;
     }
+    
     public static float weaponPower(){
-        
+        float a=1;
+        return a;
     }
+    
     public static float shieldPower(){
-        
+        float a=1;
+        return a;
     }
+    
     public static int usesLeft(){
-        
+        int a=1;
+        return a;
     }
+    
     public static float intensity(float competence){
-        
+        float a=1;
+        return a;
     }
+    
     public static boolean discardElement(int usesLeft){
-        
+        boolean a=false;
+        return a;
     }
 
     
