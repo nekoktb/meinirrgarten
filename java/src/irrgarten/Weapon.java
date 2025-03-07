@@ -27,12 +27,12 @@ public class Weapon {
         }
     }
     
-    @Override // ?¿
+   // @Override // ?¿
     public String toString() {
         return ("W[" + power + ", " + uses + "]"); 
     }
     
-    public boolean discard() { // static? (es de clase/instancia...)
+    public boolean discard() {
         return (Dice.discardElement(uses));
     }
 }
