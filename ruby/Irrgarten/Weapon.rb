@@ -2,6 +2,8 @@
 
 class Weapon
 
+  public
+
   def initialize(power, uses)
     @power = power.tp_f
     @uses = uses.to_i
