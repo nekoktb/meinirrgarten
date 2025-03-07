@@ -2,6 +2,8 @@
 
 class Shield
 
+  public
+  
   def initialize(protection, uses)
     @protection = protection.tp_f
     @uses = uses.to_i
@@ -22,6 +24,6 @@ class Shield
   def discard
     Dice.discard_element(@uses)
   end
-  
+
 end
 

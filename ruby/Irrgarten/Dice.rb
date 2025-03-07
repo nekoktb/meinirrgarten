@@ -15,7 +15,8 @@ class Dice
   
   @@generator = Random.new
 
-# Métodos de clase:
+# Métodos de clase públicos:
+  public
 
   # Devuelve un número aleatorio de fila o columna en el tablero [0, max[
   def self.random_pos(max)
@@ -86,8 +87,6 @@ class Dice
   def self.discard_element(uses_left)
     @@generator.rand(1.0) >= (uses_left.to_f/@@MAX_USES);
   end
-
-
 
 
 end
