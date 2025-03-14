@@ -36,7 +36,7 @@ module Irrgarten
     end 
   
     def to_s #Devuelve una cadena con la información del monstruo
-      "M[#{@name} (#{@inteligence}, #{@strength}, #{@health}), {#{@row}, #{@col}}]"
+      "M[#{@name} (HP: #{@health}; SP: #{@strength}; IP: #{@inteligence}); POS:{#{@row},#{@col}}]"
     end  
     
     private :got_wounded # metodo de INSTANCIA privado
