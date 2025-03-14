@@ -6,7 +6,7 @@ module Irrgarten
 
     def main
 
-      puts "hola"
+      puts "hola esto funciona?"
 
     end
 
