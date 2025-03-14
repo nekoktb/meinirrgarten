@@ -40,7 +40,11 @@ public class Monster {
         this.col = col;
     }
     
-    
+    /**
+     *
+     * @return
+     */
+    @Override
     public String toString() {
         String str = "M[ " + name + "; " + intelligence + "; " + strength + "; "
                       + health + "; (" + row + "," + col + ")]";
