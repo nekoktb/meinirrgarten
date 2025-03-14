@@ -1,4 +1,5 @@
-# encoding : UTF−8
+#encoding: utf-8
+
 module Irrgarten
 
   class Shield
@@ -19,7 +20,7 @@ module Irrgarten
     end
   
     def to_s
-      "W[#{@protection}, #{@uses}]"
+      "S[#{@protection}, #{@uses}]"
     end
     
     def discard
