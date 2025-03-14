@@ -79,7 +79,6 @@ public class Dice {
     public static boolean discardElement(int usesLeft){
         return generator.nextFloat() >= ((float)usesLeft/MAX_USES);
     }
-    
-    // ¿Que pasa si usesLeft > MAX_USES?
+
     
 }
