@@ -11,7 +11,7 @@ module Irrgarten
       @uses = uses.to_i
     end
   
-    def attack
+    def protect
       if @uses > 0
         @uses -= 1
         return @@protection

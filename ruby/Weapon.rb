@@ -7,7 +7,7 @@ module Irrgarten
     public
   
     def initialize(power, uses)
-      @power = power.tp_f
+      @power = power.to_f
       @uses = uses.to_i
     end
   

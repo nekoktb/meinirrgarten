@@ -41,7 +41,7 @@ module Irrgarten
     
     private :got_wounded # metodo de INSTANCIA privado
     def got_wounded 
-      @health--
+      @health -= 1 
     end
   
   
