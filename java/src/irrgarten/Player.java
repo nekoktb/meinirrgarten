@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-
-
 package irrgarten; //WHAT????????
+
+import java.util.ArrayList;
 
 
 public class Player {
