@@ -1,7 +1,7 @@
 #encoding : UTF−8
 module Irrgarten  
 
-  class PLayer
+  class Player
 
     @@MAX_WEAPON = 2
     @@MAX_SHIELDS = 3
@@ -11,6 +11,7 @@ module Irrgarten
     @@NAME_DEFAULT = "Player#"
 
     def initialize(number, intelligence, strength)
+      @number = number
       @name = @@NAME_DEFAULT + number.to_s
       @intelligence = intelligence
       @strength = strength
