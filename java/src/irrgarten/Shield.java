@@ -17,7 +17,7 @@ public class Shield {
         this.uses = uses;
     }
     
-    public float attack() {
+    public float protect() {
         if (uses > 0) {
             uses--;
             return protection;

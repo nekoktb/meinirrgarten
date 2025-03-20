@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-package irrgarten;
+package irrgarten; //WHAT????????
 
 
 public class Player {
@@ -37,7 +37,7 @@ public class Player {
         this.row = NULL_POS;
         this.col = NULL_POS;
         //this.consecutiveHits = 0;  //¿Esto cuenta como número mágico? 
-        resetHits() //en vez de hacerlo a mano como arriba?
+        resetHits(); //en vez de hacerlo a mano como arriba?
         this.weapons = new ArrayList<>();
         this.shields = new ArrayList<>();
     }
@@ -124,25 +124,22 @@ public class Player {
 
     //Añade un arma al jugador
     private Weapon newWeapon() {
+        Weapon weapon = new Weapon(Dice.weaponPower(), Dice.usesLeft());
         if (weapons.size() < MAX_WEAPONS) {
-            Weapon weapon = new Weapon(Dice.weaponPower(), Dice.randomUses());
             weapons.add(weapon);
-            return weapon;
-        } else {
-            return new Weapon();
-        }
+            
+        } return weapon;
         
     }
 
     //Añade un escudo al jugador
     private Shield newShield() {
+        Shield shield = new Shield(Dice.shieldPower(), Dice.usesLeft());
         if (shields.size() < MAX_SHIELDS) {
-            Shield shield = new Shield(Dice.shieldPower(), Dice.randomUses());
             shields.add(shield);
-            return shield;
-        } else {
-            return new Shield();
         }
+
+        return shield;
     }
     
     // Calcula la suma del ataque de las armas del jugador

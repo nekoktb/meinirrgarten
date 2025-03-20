@@ -83,11 +83,11 @@ module Irrgarten
     end
 
     def new_weapon
-        return Weapon.new(Dice.weapon_power, Dice.random_uses)
+        return Weapon.new(Dice.weapon_power, Dice.uses_left)
     end
 
     def new_shield
-        return Shield.new(Dice.shield_power, Dice.random_uses)
+        return Shield.new(Dice.shield_power, Dice.uses_left)
     end
 
     def sum_weapons
