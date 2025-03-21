@@ -95,6 +95,7 @@ module Irrgarten
       @weapons.each do |weapon|
         sum += weapon.attack
       end
+
       sum
     end
 

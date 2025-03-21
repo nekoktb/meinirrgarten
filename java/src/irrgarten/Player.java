@@ -35,8 +35,7 @@ public class Player {
         this.health = INITIAL_HEALTH;
         this.row = NULL_POS;
         this.col = NULL_POS;
-        //this.consecutiveHits = 0;  //¿Esto cuenta como número mágico? 
-        resetHits(); //en vez de hacerlo a mano como arriba?
+        resetHits();
         this.weapons = new ArrayList<>();
         this.shields = new ArrayList<>();
     }
@@ -124,20 +123,12 @@ public class Player {
     //Añade un arma al jugador
     private Weapon newWeapon() {
         Weapon weapon = new Weapon(Dice.weaponPower(), Dice.usesLeft());
-        if (weapons.size() < MAX_WEAPONS) {
-            weapons.add(weapon);
-            
-        } return weapon;
-        
+        return weapon;
     }
 
     //Añade un escudo al jugador
     private Shield newShield() {
         Shield shield = new Shield(Dice.shieldPower(), Dice.usesLeft());
-        if (shields.size() < MAX_SHIELDS) {
-            shields.add(shield);
-        }
-
         return shield;
     }
     
