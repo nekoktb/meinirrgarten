@@ -9,7 +9,7 @@ module Irrgarten
       @labyrinth = labyrinth;
       @players = players;
       @monsters = monsters;
-      @currentPlayer = currentPlayer;
+      @current_player = current_player;
       @winner = winner;
       @log = log;
     end
@@ -28,8 +28,8 @@ module Irrgarten
       @monsters
     end
     
-    def currentPlayer
-      @currentPlayer
+    def current_player
+      @current_player
     end
 
     def winner
