@@ -37,8 +37,38 @@ module Irrgarten
       return(@labyrinth.have_a_winner)
     end
 
+
     def next_step(preferred_direction)
       # P3
+      if !current_player.dead()
+
+        direccion = actual_direction(preferred_direction)
+
+        if direction != preferred_direction
+          log_player_no_orders
+        end
+
+        monster = labyrinth.putPlayer(direction, @current_player)
+
+        if monster == nil
+          log_no_monster
+        else
+          winner = combat(monster)
+          manage_reward(winner)
+        end
+
+      else
+        manage_resurrection
+      end
+
+      end_game = finished
+
+      if !end_game
+        next_player
+      end
+
+      return(end_game)
+
     end
 
     def get_game_state
@@ -69,7 +99,7 @@ module Irrgarten
       #P3
     end
 
-    def ma_nage_reward(winner)
+    def manage_reward(winner)
       #P3
     end
 

@@ -1,3 +1,4 @@
+#encoding: utf-8
 
 require 'io/console'
 require_relative 'directions'
