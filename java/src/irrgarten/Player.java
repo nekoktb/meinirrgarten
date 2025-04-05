@@ -72,16 +72,27 @@ public class Player {
     }
 
     //Devuelve true si el jugador está muerto
-    public boolean isDead() {
+    public boolean dead() {
         return health <= 0;
     }
 
     //Métodos de juego:
-    //Mueve al jugador en la dirección indicada
-    public void move(String direction, ArrayList<String> validMoves) {
-        //se dará informacion en la pŕactica 3 ////////////////////////////////////////////////
-        throw new UnsupportedOperationException();
 
+    /*
+     * @brief Mueve al jugador en la dirección indicada:
+     *      si la dirección dada, "direction", no es válida, se elige la primera dirección válida.
+     * 
+     * @param direction Dirección en la que se quiere el jugador.
+     * @param validMoves ArrayList con las direcciones válidas.
+     * @return La dirección en la que se moverá el jugador.
+     */
+    public Directions move(Directions direction, ArrayList<Directions> validMoves) {
+        //P3
+        int size = validMoves.size();
+        boolean contained = validMoves.contains(direction);
+        if ( (size > 0) &&  (!contained) ) {
+            return validMoves.get(0);
+        } else return direction;
     }
 
     //Ataca a un monstruo: calcula la suma de la fuerza del jugador 
@@ -90,15 +101,33 @@ public class Player {
         return strength + sumWeapons();
     }
 
-    //El jugador se defiende: 
-    public void defend(float receivedAttack) {   //acabar//////////////////////////////////////////////////////////////
-        
+    //Devuelve si el jugador se defiende o no.
+    public boolean defend(float receivedAttack) {
+        return manageHit(receivedAttack);
     }
 
 
+    /*
+     * @brief El jugador recibe la recompensa por haber matado a un monstruo.
+     *        Se le añaden armas y escudos, y se incrementa su salud.
+     */
     public void receiveReward() {
-        //se dará informacion en la pŕactica 3 ////////////////////////////////////////////////
-        throw new UnsupportedOperationException();
+        //P3
+
+        int wReward = Dice.weaponsReward();
+        int sReward = Dice.shieldsReward();
+        for (int i = 0; i < wReward; i++) {
+            Weapon wnew = newWeapon();          
+            receiveWeapon(wnew);               
+        }
+        for (int i = 0; i < sReward; i++) {
+            Shield snew = newShield();         
+            receiveShield(snew);               
+        }
+        int extraHealth = Dice.healthReward();
+        
+        this.health += extraHealth;
+        
     }
 
     
@@ -107,14 +136,59 @@ public class Player {
         return "P[" + name + " (HP: " + health + "; SP: " + strength + "; IP: " + intelligence + "); POS:{" + row + "," + col + "}]";
     }
 
+
+    /*
+     * @brief El jugador recibe un arma, "w".
+     *        Descarta las armas que deben ser descartados.
+     *        Si el número de armas es menor que el máximo, se añade la nueva arma, "w".
+     * 
+     * @param w Arma que recibe el jugador.
+     */
     private void receiveWeapon(Weapon w) {
-        //se dará informacion en la pŕactica 3 ////////////////////////////////////////////////
-        throw new UnsupportedOperationException();
+        //P3
+
+        for (int i = 0; i < weapons.size(); i++) {
+            Weapon wi = weapons.get(i);
+            boolean discard = wi.discard();
+            if (discard) {
+                weapons.remove(i);
+                i--;
+            }
+        }
+
+        int size = weapons.size();
+
+        if (size < MAX_SHIELDS) {
+            weapons.add(w);
+        }
+
     }
 
+    /*
+     * @brief El jugador recibe un escudo, "s".
+     *        Descarta los escudos que deben ser descartados.
+     *        Si el número de escudos es menor que el máximo, se añade el nuevo escudo.
+     * 
+     * @param s Escudo que recibe el jugador.
+     */
     private void receiveShield(Shield s) {
-        //se dará informacion en la pŕactica 3 ////////////////////////////////////////////////
-        throw new UnsupportedOperationException();
+        //P3
+
+        for (int i = 0; i < shields.size(); i++) {
+            Shield si = shields.get(i);
+            boolean discard = si.discard();
+            if (discard) {
+                shields.remove(i);
+                i--;
+            }
+        }
+
+        int size = shields.size();
+
+        if (size < MAX_SHIELDS) {
+            shields.add(s);
+        }
+
     }
 
 
@@ -155,9 +229,21 @@ public class Player {
         return intelligence + sumShields();
     }
 
-    private void manageHit(float receivedAttack) {
-        //se dará informacion en la pŕactica 3 ////////////////////////////////////////////////
-        throw new UnsupportedOperationException();
+
+    private boolean manageHit(float receivedAttack) {
+        //P3
+        boolean lose;
+        float defense = defensiveEnergy();
+        if (defense < receivedAttack) {
+            gotWounded();
+            incConsecutiveHits();
+        } else resetHits();
+        
+        if ((consecutiveHits == HIT2LOSE) || dead()){
+            resetHits();
+            lose = true;
+        } else lose = false;
+        return lose;
     }
 
     // Resetea el contador de golpes consecutivos

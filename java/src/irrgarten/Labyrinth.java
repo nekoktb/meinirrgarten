@@ -50,11 +50,16 @@ public class Labyrinth {
     /**
      * @brief Distribuye jugadores en el laberinto.
      * @param players Array de jugadores a distribuir.
-     * 
-     * Este método está pendiente de implementación (P3).
      */
     public void spreadPlayers(Player[] players) {
         // P3
+
+        for (int i = 0; i < players.length; i++) {
+            Player p = players[i];
+            int[] pos = randomEmptyPos();
+
+            putPlayer2D(-1, -1, pos[ROW], pos[COL], p);
+        }
     }
 
     /**
@@ -139,12 +144,28 @@ public class Labyrinth {
      * @param row Fila actual.
      * @param col Columna actual.
      * @return Un array de direcciones válidas.
-     * 
-     * Este método está pendiente de implementación (P3).
      */
     public Directions[] validMoves(int row, int col) {
         // P3
-        return null;
+        
+        Directions[] output = new Directions[4];
+        
+        if (canStepOn(row + 1, col)) {
+            output[0] = Directions.DOWN;
+        }
+        if (canStepOn(row - 1, col)) {
+            output[1] = Directions.UP;
+        }
+        if (canStepOn(row, col + 1)) {
+            output[2] = Directions.RIGHT;
+        }
+        if (canStepOn(row, col - 1)) {
+            output[3] = Directions.LEFT;
+        }
+
+
+        return output;
+        
     }
 
     /**

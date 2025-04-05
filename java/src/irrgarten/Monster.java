@@ -87,10 +87,18 @@ public class Monster {
      * @brief Defiende al monstruo de un ataque recibido.
      * @param receivedAttack Intensidad del ataque recibido.
      * @return `true` si el monstruo logra defenderse, `false` en caso contrario.
-     * 
-     * Este método está pendiente de implementación.
      */
     public boolean defend(float receivedAttack) {
-        throw new UnsupportedOperationException();
+        boolean isDead = dead();
+        
+        if (!isDead) {
+            float defensiveEnergy = Dice.intensity(this.intelligence);
+            
+            if (defensiveEnergy < receivedAttack) {
+                gotWounded();
+                isDead = dead();
+            }
+        }
+        return isDead;
     }
 }
