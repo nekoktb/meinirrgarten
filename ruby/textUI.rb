@@ -56,12 +56,38 @@ module UI
       end
       output
     end
+   
 
+    # Método para mostrar el estado del juego
     def show_game(game_state)
+      system("clear") || system("cls")  # Limpia la pantalla (UNIX o Windows)
+      puts "========== IRRGARTEN =========="
+      puts "¿Ganador?: #{game_state.winner}"
+      puts "Jugador actual: #{game_state.current_player}"
+      puts
+    
+      puts "------ Laberinto ------"
+      puts game_state.labyrinth.to_s  # Asumimos que imprime el tablero o mapa
+    
+      puts
+      puts "------ Jugadores ------"
+      puts game_state.players.to_s  # Asumimos que ya es string formateado
 
-    end
 
-  end # class   
+      puts
+      puts "------ Monstruos ------"
+      puts game_state.monsters.to_s  # Asumimos que ya es string formateado
+      
+    
+      puts
+      puts "------ Registro ------"
+      puts game_state.log
+    
+      puts "==============================="
+    end # show_game
+
+  end # class TextUI
+
 
 end # module   
 
