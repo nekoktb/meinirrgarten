@@ -185,10 +185,22 @@ module Irrgarten
     end
 
 
+    # Este método recibe la posicion actual (old_row, old_col) de un jugador (player) y la nueva posición (row, col)
+    # a la que se quiere mover. 
+    # Si la nueva posición puede ser ocupada por el jugador
+    #     y la posición anterior es válida
+    #         se actualiza la antigua posicion del jugador (si es el que estaba en la posición).
+    #     y en la nueva posición hay un monstruo
+    #         se entra en combate y se devuelve el monstruo
+    #     y en la nueva posición NO hay monstruo
+    #         se actualiza el laberinto con el número del jugador
+    #     Finalmente se actualiza la posición del jugador
+    #     y se devuelve el monstruo (si lo había) (o nil si no lo había)
     def put_player_2D (old_row, old_col, row, col, player)
       # P3
 
       output = nil
+
       if can_step_on(row, col)
         if pos_ok(old_row, old_col)
           p = @players[old_row][old_col] # NO SIRVE @players.get(old_row, old_col) no existe el get de los arrays en ruby
@@ -203,11 +215,17 @@ module Irrgarten
           output = @monsters[row][col]
         else
           number = player.number
+          @labyrinth[row][col] = number.to_s
         end
-        
 
+        @players[row][col] = player
+        player.setPos(row, col)
 
-    end
+      end
+
+      return output
+
+    end # put_player_2D
     
 
 
