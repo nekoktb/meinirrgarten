@@ -158,7 +158,7 @@ public class Player {
 
         int size = weapons.size();
 
-        if (size < MAX_SHIELDS) {
+        if (size < MAX_WEAPONS) {
             weapons.add(w);
         }
 
