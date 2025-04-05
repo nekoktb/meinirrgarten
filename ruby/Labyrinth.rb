@@ -63,12 +63,45 @@ module Irrgarten
       end
     end 
 
+
+    # Este método recibe un jugador y una dirección y coloca al jugador en la posición siguiente
+    # al jugador en la dirección indicada.
+    # Si la posición siguiente está vacía, se devuelve nil.
+    # Si la posición siguiente está ocupada por un monstruo, se devuelve el monstruo.
     def put_player (direction, player)
       # P3
+      old_row = player.row
+      old_col = player.col
+      new_pos = dir_2_pos(old_row, old_col, direction)
+      monster = put_player_2D(old_row, old_col, new_pos[@@ROW], new_pos[@@COL], player)
+      return monster
     end
 
+
+    # Este método añade un bloque de longitud length en la dirección indicada por el parámetro orientation.
+    # La posición inicial del bloque es (start_row, start_col) y el bloque se añade en la dirección
+    # indicada por el parámetro orientation.
     def add_block (orientation, start_row, start_col, length)
       # P3
+
+      if orientation == Orientation.VERTICAL
+        inc_row = 1
+        inc_col = 0
+      else
+        inc_row = 0
+        inc_col = 1
+      end
+      row = start_row
+      col = start_col
+
+      loop ( (pos_ok(row, col) && empty_pos(row, col)) && (length > 0) ) do
+        @labyrinth[row][col]  #en el diagrama se usa el metodo set, pero no existe
+        length -= 1
+        row += inc_row
+        col += inc_col
+      end
+
+
     end
 
     def valid_moves (row, col)
@@ -151,8 +184,29 @@ module Irrgarten
       return [row, col]
     end
 
+
     def put_player_2D (old_row, old_col, row, col, player)
       # P3
+
+      output = nil
+      if can_step_on(row, col)
+        if pos_ok(old_row, old_col)
+          p = @players[old_row][old_col] # NO SIRVE @players.get(old_row, old_col) no existe el get de los arrays en ruby
+          if p == player
+            update_old_pos(old_row, old_col)
+            @players[row][col] = nil  # NO SIRVE @players.set(row, col, nil) no existe el set de los arrays en ruby
+          end
+        end
+      
+        if monster_pos(row, col)
+          @labyrinth[row][col] = @@COMBAT_CHAR
+          output = @monsters[row][col]
+        else
+          number = player.number
+        end
+        
+
+
     end
     
 

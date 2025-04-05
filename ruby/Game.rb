@@ -37,7 +37,7 @@ module Irrgarten
       return(@labyrinth.have_a_winner)
     end
 
-    
+
     # Método para gestionar el movimiento del jugador
     # Si el jugador no está muerto, se mueve en la dirección preferida (salvo que no pueda)
     #     Si en elsa posicion hay un monstruo, se combate
@@ -104,8 +104,8 @@ module Irrgarten
     # Si el jugador se mueve, devuelve la dirección real
     def actual_direction(preferred_direction)
       #P3
-      current_row = @current_player.get_row
-      current_col = @current_player.get_col
+      current_row = @current_player.row
+      current_col = @current_player.col
       valid_moves = @labyrinth.valid_moves(current_row, current_col) # Devuelve un array con las direcciones válidas
       output = @current_player.move(preferred_direction, valid_moves)
       return output
