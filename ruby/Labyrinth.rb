@@ -1,7 +1,7 @@
 #encoding : UTF−8
 module Irrgarten
 
-  class Labirinth
+  class Labyrinth
     
     #Atributos de clase
     @@BLOCK_CHAR = '#'
@@ -87,7 +87,7 @@ module Irrgarten
       @labyrinth[row][col] == @@EMPTY_CHAR
     end
 
-    def mosnter_pos (row, col)
+    def monster_pos (row, col)
       @labyrinth[row][col] == @@MONSTER_CHAR
     end
 

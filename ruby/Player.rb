@@ -63,7 +63,7 @@ module Irrgarten
       # P3, depende de la implementación de manage_hit
     end
 
-    def recieve_reward
+    def receive_reward
       # P3
     end
 
