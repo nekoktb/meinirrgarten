@@ -91,7 +91,7 @@ module Irrgarten
     private
 
     def configure_labyrinth
-
+      
     end
 
     def next_player
