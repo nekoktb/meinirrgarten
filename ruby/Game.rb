@@ -91,7 +91,38 @@ module Irrgarten
     private
 
     def configure_labyrinth
-      
+      n_rows = 6
+      n_cols = 7
+      exit_row = 5
+      exit_col = 6
+
+      @labyrinth = Labyrinth.new(n_rows, n_cols, exit_row, exit_col)
+
+      base = [
+          ['-', 'X', '-', 'M', 'X', 'X', 'X'],
+          ['-', 'X', 'M', '-', '-', '-', '-'],
+          ['-', 'X', 'X', 'X', '-', 'X', '-'],
+          ['M', '-', '-', '-', 'M', '-', '-'],
+          ['X', 'X', 'X', 'X', '-', 'X', 'M'],
+          ['X', '-', 'M', '-', '-', 'X', 'E']
+      ]
+
+      base.each_with_index do |row, r|
+          row.each_with_index do |cell, c|
+              case cell
+              when 'X' # Muro
+                  @labyrinth.add_block(Orientation::HORIZONTAL, r, c, 1)
+              when 'M' # Monstruo
+                  monster = Monster.new("Bombardiro Crocodilo", Dice.random_intelligence, Dice.random_strength)
+                  @labyrinth.add_monster(r, c, monster)
+                  @monsters << monster
+              end
+          end
+      end
+
+      unless @players.empty?
+          @labyrinth.spread_players(@players)
+      end
     end
 
     def next_player
