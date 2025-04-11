@@ -23,11 +23,8 @@ module Irrgarten
 
       @labyrinth = Labirinth.new
 
+      configure_labyrinth
       
-      
-
-
-
     end
 
     #Métodos de instancia públicos
