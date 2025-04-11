@@ -4,12 +4,26 @@
  */
 package irrgarten;
 
+import irrgarten.Controller.Controller;
+import irrgarten.UI.TextUI;
+
 /**
  *
  * @author nekok
  */
 public class TestP1 {
     public static void main(String[] args) {
+        Game game = new Game(2);
+        TextUI ui = new TextUI();
+        Controller controller = new Controller(game, ui);
+        
+        
+        while (game.finished() == false) {
+            
+            controller.play();
+            
+        }
+        
        
     }
 }
