@@ -1,4 +1,10 @@
-#encoding : UTF−8
+#encoding: UTF-8
+
+require_relative 'Orientation'
+require_relative 'Directions'
+require_relative 'Dice'
+
+
 module Irrgarten
 
   class Labyrinth
@@ -20,8 +26,8 @@ module Irrgarten
       @exit_row = exit_row
       @exit_col = exit_col
 
-      @monsters = Array.new(rows) { Array.new(cols) { Monster.new } }
-      @players = Array.new(rows) { Array.new(cols) { Player.new } }
+      @monsters = Array.new(rows) { Array.new(cols) { nil } }
+      @players = Array.new(rows) { Array.new(cols) { nil } }
       @labyrinth = Array.new(rows) { Array.new(cols) { @@EMPTY_CHAR } }
     
     end
@@ -55,7 +61,7 @@ module Irrgarten
     # Si la posición suministrada está dentro del tablero y está vacía, 
     # anota en el laberinto la presencia de un monstruo, guarda la referencia del monstruo en el
     # atributo contenedor adecuado e indica al monstruo cual es su posición actual (setPos).
-    def add_moster (row, col, monster)
+    def add_monster (row, col, monster)
       if pos_ok(row, col) && empty_pos(row, col)
         @labyrinth[row][col] = @@MONSTER_CHAR
         @monsters[row][col] = monster
@@ -84,7 +90,7 @@ module Irrgarten
     def add_block (orientation, start_row, start_col, length)
       # P3
 
-      if orientation == Orientation.VERTICAL
+      if orientation == Orientation::VERTICAL
         inc_row = 1
         inc_col = 0
       else
@@ -94,7 +100,7 @@ module Irrgarten
       row = start_row
       col = start_col
 
-      loop ( (pos_ok(row, col) && empty_pos(row, col)) && (length > 0) ) do
+      while ( (pos_ok(row, col) && empty_pos(row, col)) && (length > 0) ) do
         @labyrinth[row][col]  #en el diagrama se usa el metodo set, pero no existe
         length -= 1
         row += inc_row

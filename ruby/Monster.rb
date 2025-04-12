@@ -1,5 +1,8 @@
 #encoding: utf-8
 
+require_relative 'Dice'
+
+
 module Irrgarten
 
 
@@ -39,11 +42,11 @@ module Irrgarten
       "M[#{@name} (HP: #{@health}; SP: #{@strength}; IP: #{@inteligence}); POS:{#{@row},#{@col}}]"
     end  
     
-    private :got_wounded # metodo de INSTANCIA privado
     def got_wounded 
       @health -= 1 
     end
   
+    private :got_wounded # metodo de INSTANCIA privado
   
   end #class
 

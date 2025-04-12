@@ -1,4 +1,16 @@
-#encoding : UTF−8
+#encoding: UTF-8
+
+require_relative 'Dice'
+require_relative 'GameCharacter'
+require_relative 'GameState'
+
+#Los de aquí abajo???????????????? son ilegales??
+require_relative 'Player' 
+require_relative 'Labyrinth'
+require_relative 'Monster'
+
+
+
 module Irrgarten
 
   class Game
@@ -11,7 +23,7 @@ module Irrgarten
       @current_player_index = Dice.who_starts(nplayers)
       @log = ""
       @players = []  # Contenedor de jugadores
-      
+
       nplayers.times do |i|
         player = Player.new((i+1).to_s, Dice.random_intelligence, Dice.random_strength)
         @players << player
@@ -20,8 +32,6 @@ module Irrgarten
       @current_player = @players[@current_player_index]
 
       @monsters = [] # Contenedor de monstruos
-
-      @labyrinth = Labirinth.new
 
       configure_labyrinth
       
@@ -47,7 +57,7 @@ module Irrgarten
       # P3
       if !@current_player.dead()
 
-        direccion = actual_direction(preferred_direction)
+        direction = actual_direction(preferred_direction)
 
         if direction != preferred_direction
           log_player_no_orders
@@ -76,9 +86,9 @@ module Irrgarten
 
     end
 
-    def get_game_state
-      players_s = @players.map(&:to_s).join(", ")
-      monsters_s = @monsters.map(&:to_s).join(", ")
+    def game_state
+      players_s = @players.map(&:to_s).join("\n")
+      monsters_s = @monsters.map(&:to_s).join("\n")
       game_state = GameState.new(@labyrinth.to_s,players_s, monsters_s, @current_player_index, finished, @log)
       return(game_state)
     end
@@ -197,31 +207,32 @@ module Irrgarten
 
     # Métodos de instancia privados para el log:
     def log_player_won
-      @log += "#{@current_player.name} ha ganado el combate\n"
+      @log += "Player##{@current_player.number} ha ganado el combate\n"
     end
 
     def log_monster_won
-      @log += "#{@current_player.name} ha perdido el combate\n"
+      @log += "Player##{@current_player.number} ha perdido el combate\n"
     end
 
     def log_resurrected
-      @log += "#{@current_player.name} ha resucitado\n"
+      @log += "Player##{@current_player.number} ha resucitado\n"
     end
 
     def log_player_skip_turn
-      @log += "#{@current_player.name} sigue muerto, ha perdido su turno\n"
+      @log += "Player##{@current_player.number} sigue muerto, ha perdido su turno\n"
     end
 
     def log_player_no_orders
-      @log += "#{@current_player.name} no se ha seguido la orden\n"
+      @log += "Player##{@current_player.number} no se ha seguido la orden\n"
     end
 
     def log_no_monster
-      @log += "#{@current_player.name} no hay monstruo en la posición o no se ha podido mover\n"
+      @log += "Player##{@current_player.number} no hay monstruo en la posición o no se ha podido mover\n"
     end
 
     def log_rounds(rounds, max)
-      @log += "#{@current_player.name} se han producido #{rounds} de #{max} rondas de combate\n"
+      @log += "Player##{@current_player.number} se han producido #{rounds} de #{max} rondas de combate\n"
     end
-
+  end # class Game
+end # module Irrgarten
 

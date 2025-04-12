@@ -170,6 +170,7 @@ public class Labyrinth {
      * @return Un array de direcciones válidas.
      */
     public ArrayList<Directions> validMoves(int row, int col) {
+        //p3
         ArrayList<Directions> output = new ArrayList<>();
         
         if (canStepOn(row + 1, col)) {

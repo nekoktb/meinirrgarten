@@ -1,4 +1,8 @@
-#encoding : UTF−8
+#encoding: UTF-8
+
+require_relative 'Dice'
+require_relative 'Directions'
+
 module Irrgarten  
 
   class Player
@@ -68,7 +72,7 @@ module Irrgarten
     end
 
     def to_string
-      "P[#{@name} (HP: #{@health}; SP: #{@strength}; IP: #{@intelligence}); POS:{#{@row},#{@col}}]"
+      "P[#{@name} (HP: #{@health}; Base_SP: #{@strength}; Weapon_Sp: #{sum_weapons}; IP: #{@intelligence}); Shield: #{sum_shields};POS:{#{@row},#{@col}}]"
     end
 
 
@@ -126,5 +130,7 @@ module Irrgarten
     def inc_consecutive_hits
       @consucutive_hits += 1
     end
+
+  end #class Player
 
 end #module Irrgarten
