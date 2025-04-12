@@ -10,7 +10,7 @@ public class Player {
     private static final int INITIAL_HEALTH = 10;
     private static final int HIT2LOSE = 3;
 
-    private static final String NAME_DEFAULT = "Player#";
+    private static final String NAME_DEFAULT = "Player";
     private static final int NULL_POS = -1;
 
     //Atributos privados de instancia:
@@ -38,6 +38,7 @@ public class Player {
         resetHits();
         this.weapons = new ArrayList<>();
         this.shields = new ArrayList<>();
+        System.out.println("Player " + number + " created.");
     }
 
     //Resucita al jugador

@@ -33,9 +33,9 @@ public class Game {
         //La inicialización de labyrinth debería hacerse en configureLabyrinth() para meter literales
 
         //Lo de abajo debe hacerlo el configureLabyrinth?????
-        Dice d = new Dice();
         for (int i = 0; i < nPlayers; i++) {
-            players.add(new Player( (char)i , Dice.randomIntelligence() , Dice.randomStrength() )); 
+            System.out.println((char)(i+'0'));
+            players.add(new Player( (char)(i+'0') , Dice.randomIntelligence() , Dice.randomStrength() )); 
         }
 
         this.currentPlayer = players.get(currentPlayerIndex);
