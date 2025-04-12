@@ -56,7 +56,10 @@ public class Labyrinth {
     public void spreadPlayers(ArrayList<Player> players) {
         // P3
         for (Player p : players) {
-            int[] pos = randomEmptyPos();
+            int[] pos;
+            do {
+                pos = randomEmptyPos();
+            } while (pos[ROW] == exitRow && pos[COL] == exitCol);
             putPlayer2D(-1, -1, pos[ROW], pos[COL], p);
         }
     }
