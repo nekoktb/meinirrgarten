@@ -122,7 +122,12 @@ public class Labyrinth {
      * Este método está pendiente de implementación (P3).
      */
     public Monster putPlayer(Directions direction, Player player) {
-        return null; // P3
+        // P3
+        int oldRow = player.getRow();
+        int oldCol = player.getCol();
+        int[] newPos = dir2Pos(oldRow, oldCol, direction);
+        Monster monster = putPlayer2D(oldRow, oldCol, newPos[ROW], newPos[COL], player);
+        return monster; 
     }
 
     /**
@@ -136,6 +141,23 @@ public class Labyrinth {
      */
     public void addBlock(Orientation orientation, int startRow, int startCol, int length) {
         // P3
+        int incRow = 0;
+        int incCol = 0;
+
+        if (orientation == Orientation.VERTICAL) 
+            incRow = 1;
+        else 
+            incCol = 1;
+
+        int row = startRow;
+        int col = startCol;
+
+        while ((posOK(row, col)) && (emptyPos(row, col)) && (length > 0)) {
+            labyrinth[row][col] = BLOCK_CHAR;
+            length--;
+            row += incRow;
+            col += incCol;
+        }
     }
 
     /**
@@ -298,6 +320,30 @@ public class Labyrinth {
      * Este método está pendiente de implementación (P3).
      */
     private Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player) {
-        return null; // P3
+        // P3
+        Monster output = null;
+        if (canStepOn(row, col)) {
+            if (posOK(oldRow, oldCol)) {
+                Player p = players[oldRow][oldCol];
+                if (p == player) {
+                    updateOldPos(oldRow, oldCol);
+                    players[oldRow][oldCol] = null;
+                }
+            }
+
+            boolean monsterPos = monsterPos(row, col);
+            if (monsterPos) {
+                labyrinth[row][col] = COMBAT_CHAR;
+                output = monsters[row][col];
+            } else {
+                char number = player.getNumber();
+                labyrinth[row][col] = number;
+            }
+
+            players[row][col] = player;
+            player.setPos(row, col);
+        }
+
+        return output; 
     }
 }
