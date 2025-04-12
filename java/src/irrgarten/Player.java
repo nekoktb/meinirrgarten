@@ -133,7 +133,7 @@ public class Player {
     
     @Override
     public String toString() {
-        return "[" + name + ": (HP: " + health + "; SP: " + strength + "" "; IP: " + intelligence + "); POS:{" + row + "," + col + "}]";
+        return "[" + name + ": (HP: " + health + "; Base_SP: " + strength + " + Weapons_SP: " + sumWeapons() + "; IP: " + intelligence + " + Shield:"+ sumShields() + "); POS:{" + row + "," + col + "}]";
     }
 
 
