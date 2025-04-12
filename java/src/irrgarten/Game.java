@@ -34,7 +34,6 @@ public class Game {
 
         //Lo de abajo debe hacerlo el configureLabyrinth?????
         for (int i = 0; i < nPlayers; i++) {
-            System.out.println((char)(i+'0'));
             players.add(new Player( (char)(i+'0') , Dice.randomIntelligence() , Dice.randomStrength() )); 
         }
 
@@ -249,7 +248,7 @@ public class Game {
      *  indicando que el jugador ha ganado el combate. También añade el indicador de nueva línea al final.
      */
     private void logPlayerWon(){
-        String mensaje = "Player#" + currentPlayer.getNumber() + " ha ganado el combate" + "\n";
+        String mensaje = "Player" + currentPlayer.getNumber() + " ha ganado el combate" + "\n";
         log += mensaje;
     }
 
@@ -269,7 +268,7 @@ public class Game {
      * También añade el indicador de nueva línea al final.
      */
     private void logResurrected(){
-        String mensaje = "Player#" + currentPlayer.getNumber() + " ha resucitado" + "\n";   
+        String mensaje = "Player" + currentPlayer.getNumber() + " ha resucitado" + "\n";   
         log += mensaje;
     }
 
@@ -279,7 +278,7 @@ public class Game {
      * También añade el indicador de nueva línea al final.
      */
     private void logPlayerSkipTurn(){
-        String mensaje = "Player#" + currentPlayer.getNumber() + " ha perdido el turno por estar muerto" + "\n";
+        String mensaje = "Player" + currentPlayer.getNumber() + " ha perdido el turno por estar muerto" + "\n";
         log += mensaje;
     }
     
@@ -289,7 +288,7 @@ public class Game {
      * También añade el indicador de nueva línea al final.
      */
     private void logPlayerNoOrders(){
-        String mensaje = "Player#" + currentPlayer.getNumber() + " no ha seguido las instrucciones dadas (no fue posible)" + "\n";
+        String mensaje = "Player" + currentPlayer.getNumber() + " no ha seguido las instrucciones dadas (no fue posible)" + "\n";
         log += mensaje; 
     }
 
@@ -299,7 +298,7 @@ public class Game {
      * También añade el indicador de nueva línea al final.
      */
     private void logNoMonster(){
-        String mensaje = "Player#" + currentPlayer.getNumber() + " se ha movido a una celda vacía o no le ha sido posible moverse" + "\n";
+        String mensaje = "Player" + currentPlayer.getNumber() + " se ha movido a una celda vacía o no le ha sido posible moverse" + "\n";
         log += mensaje;
     }
 

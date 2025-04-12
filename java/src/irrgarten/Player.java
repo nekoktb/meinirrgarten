@@ -38,7 +38,6 @@ public class Player {
         resetHits();
         this.weapons = new ArrayList<>();
         this.shields = new ArrayList<>();
-        System.out.println("Player " + number + " created.");
     }
 
     //Resucita al jugador

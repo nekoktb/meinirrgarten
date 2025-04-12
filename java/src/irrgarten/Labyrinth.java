@@ -261,7 +261,7 @@ public class Labyrinth {
      * @return true si se puede pisar, false en caso contrario.
      */
     private boolean canStepOn(int row, int col) {
-        return posOK(row, col) && (emptyPos(row, col) || exitPos(row, col) || combatPos(row, col));
+        return posOK(row, col) && (emptyPos(row, col) || exitPos(row, col) || monsterPos(row, col));
     }
 
     /**
@@ -330,7 +330,7 @@ public class Labyrinth {
                     players[oldRow][oldCol] = null;
                 }
             }
-
+            
             boolean monsterPos = monsterPos(row, col);
             if (monsterPos) {
                 labyrinth[row][col] = COMBAT_CHAR;
