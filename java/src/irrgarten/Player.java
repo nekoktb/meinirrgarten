@@ -107,7 +107,7 @@ public class Player {
     }
 
 
-    /*
+    /**
      * @brief El jugador recibe la recompensa por haber matado a un monstruo.
      *        Se le añaden armas y escudos, y se incrementa su salud.
      */
@@ -137,7 +137,7 @@ public class Player {
     }
 
 
-    /*
+    /**
      * @brief El jugador recibe un arma, "w".
      *        Descarta las armas que deben ser descartados.
      *        Si el número de armas es menor que el máximo, se añade la nueva arma, "w".
@@ -164,7 +164,7 @@ public class Player {
 
     }
 
-    /*
+    /**
      * @brief El jugador recibe un escudo, "s".
      *        Descarta los escudos que deben ser descartados.
      *        Si el número de escudos es menor que el máximo, se añade el nuevo escudo.
