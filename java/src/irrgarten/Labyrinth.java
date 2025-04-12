@@ -1,5 +1,7 @@
 package irrgarten;
 
+import java.util.ArrayList;
+
 public class Labyrinth {
     private static final char BLOCK_CHAR = 'X';
     private static final char EMPTY_CHAR = '-';
@@ -51,13 +53,10 @@ public class Labyrinth {
      * @brief Distribuye jugadores en el laberinto.
      * @param players Array de jugadores a distribuir.
      */
-    public void spreadPlayers(Player[] players) {
+    public void spreadPlayers(ArrayList<Player> players) {
         // P3
-
-        for (int i = 0; i < players.length; i++) {
-            Player p = players[i];
+        for (Player p : players) {
             int[] pos = randomEmptyPos();
-
             putPlayer2D(-1, -1, pos[ROW], pos[COL], p);
         }
     }
@@ -145,27 +144,23 @@ public class Labyrinth {
      * @param col Columna actual.
      * @return Un array de direcciones válidas.
      */
-    public Directions[] validMoves(int row, int col) {
-        // P3
-        
-        Directions[] output = new Directions[4];
+    public ArrayList<Directions> validMoves(int row, int col) {
+        ArrayList<Directions> output = new ArrayList<>();
         
         if (canStepOn(row + 1, col)) {
-            output[0] = Directions.DOWN;
+            output.add(Directions.DOWN);
         }
         if (canStepOn(row - 1, col)) {
-            output[1] = Directions.UP;
+            output.add(Directions.UP);
         }
         if (canStepOn(row, col + 1)) {
-            output[2] = Directions.RIGHT;
+            output.add(Directions.RIGHT);
         }
         if (canStepOn(row, col - 1)) {
-            output[3] = Directions.LEFT;
+            output.add(Directions.LEFT);
         }
-
-
-        return output;
         
+        return output;
     }
 
     /**

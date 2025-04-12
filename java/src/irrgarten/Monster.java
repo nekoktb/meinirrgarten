@@ -86,7 +86,7 @@ public class Monster {
     /**
      * @brief Defiende al monstruo de un ataque recibido.
      * @param receivedAttack Intensidad del ataque recibido.
-     * @return `true` si el monstruo logra defenderse, `false` en caso contrario.
+     * @return `true` si el monstruo está muerto tras recibir el ataque, `false` si logra sobrevivir.
      */
     public boolean defend(float receivedAttack) {
         boolean isDead = dead();

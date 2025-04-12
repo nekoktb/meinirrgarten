@@ -1,7 +1,7 @@
-
 package irrgarten;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Game {
 
@@ -56,10 +56,33 @@ public class Game {
 
     public boolean nextStep(Directions preferredDirection){
         //P3
+        this.log = "";
+        boolean dead = currentPlayer.dead();
+        if (!dead) {
+            Directions direction = actualDirection(preferredDirection);
+            
+            if (direction != preferredDirection) 
+                logPlayerNoOrders();
+            
+            Monster monster = labyrinth.putPlayer(direction, currentPlayer);
+
+            if (monster == null)
+                logNoMonster();
+            else {
+                GameCharacter winner = combat(monster);
+                manageReward(winner);
+            }
+        }
+        else 
+            manageResurrection();
+
+        boolean endGame = finished();
+
+        if (!endGame)
+            nextPlayer();
 
 
-
-        return true;
+        return endGame;
     }
 
 
@@ -142,7 +165,7 @@ public class Game {
     
         // Nota: esto solo debe ejecutarse si los jugadores ya fueron creados
         if (!players.isEmpty()) {
-            labyrinth.spreadPlayers(players.toArray(new Player[0]));
+            labyrinth.spreadPlayers(players);
         }
     }
     
@@ -160,23 +183,66 @@ public class Game {
         currentPlayer = players.get(currentPlayerIndex);
     }
 
-    
-    private Directions actualDirections(Directions preferredDirection){
-        //P3
-        return preferredDirection;
+    /**
+    * @brief Obtiene la dirección real en la que se moverá el jugador.
+    *
+    * Este método consulta el laberinto para obtener las direcciones válidas según
+    * la posición actual del jugador y, a partir de la dirección preferida, determina
+    * la dirección real de movimiento utilizando la lógica interna del jugador.
+    *
+    * @param preferredDirection La dirección preferida por el jugador.
+    * @return La dirección final en la que se moverá el jugador.
+    */
+    private Directions actualDirection(Directions preferredDirection){
+        int currentRow = currentPlayer.getRow();
+        int currentCol = currentPlayer.getCol();
+        ArrayList<Directions> validMoves = labyrinth.validMoves(currentRow, currentCol);
+        Directions output = currentPlayer.move(preferredDirection, validMoves);
+        return output;
     }
 
     private GameCharacter combat(Monster monster){
-        //P3
-        return null;
+        int rounds = 0;
+
+        GameCharacter winner = GameCharacter.PLAYER;
+        float playerAttack = currentPlayer.attack();
+        boolean lose = monster.defend(playerAttack);
+
+        while (!lose && rounds < MAX_ROUNDS) {
+            winner = GameCharacter.MONSTER;
+            rounds++;
+            float monsterAttack = monster.attack();
+            lose = currentPlayer.defend(monsterAttack);
+
+            if(!lose) {
+                playerAttack = currentPlayer.attack();
+                winner = GameCharacter.PLAYER;
+                lose = monster.defend(playerAttack);
+            }
+        }
+        logRounds(rounds, MAX_ROUNDS);
+        return winner;
     }
     
     private void manageReward(GameCharacter winner){
         //P3
+        if (winner == GameCharacter.PLAYER) {
+            currentPlayer.receiveReward();
+            logPlayerWon();
+        }
+        else 
+            logMonsterWon();
     }
 
     private void manageResurrection(){
         //P3
+        boolean resurrect = Dice.resurrectPlayer();
+        if (resurrect) {
+            currentPlayer.resurrect();
+            logResurrected();
+        } else {
+            logPlayerSkipTurn();
+        }
     }
 
     /*  Añade al final del atributo log (concatena cadena al final) el mensaje
