@@ -51,7 +51,7 @@ public class Labyrinth {
 
     /**
      * @brief Distribuye jugadores en el laberinto.
-     * @param players Array de jugadores a distribuir.
+     * @param players ArrayList de jugadores a distribuir.
      */
     public void spreadPlayers(ArrayList<Player> players) {
         // P3

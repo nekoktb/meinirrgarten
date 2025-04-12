@@ -1,7 +1,7 @@
 package irrgarten;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Random;
 
 public class Game {
 
@@ -98,7 +98,7 @@ public class Game {
         String players_cad = "";
         for(int i = 0; i < players.size()-1; i++){
             players_cad+= players.get(i).toString();
-            players_cad+= ", ";
+            players_cad+= "\n";
         }
         players_cad+= players.get(players.size()-1).toString();
 
@@ -106,7 +106,7 @@ public class Game {
         String monster_cad = "";
         for(int i = 0; i < monsters.size()-1; i++){
             monster_cad+= monsters.get(i).toString();
-            monster_cad+= ", ";
+            monster_cad+= "\n";
         }
         monster_cad+= monsters.get(monsters.size()-1).toString();
         
@@ -143,6 +143,8 @@ public class Game {
         };
         
         // Inicializa el laberinto
+        String monstruos[] = {"Bombardino Crocodilo", "Bombardini Guzzini", "Tun Tun Tun Sahur", "Tralalero Tralala"};
+        Random random = new Random();
         for (int row = 0; row < nRows; row++) {
             for (int col = 0; col < nCols; col++) {
                 char cell = base[row][col];
@@ -151,7 +153,7 @@ public class Game {
                         labyrinth.addBlock(Orientation.HORIZONTAL, row, col, 1);
                         break;
                     case 'M': // Monstruo
-                        Monster m = new Monster("Bombardiro Crocodilo", Dice.randomIntelligence() , Dice.randomStrength());
+                        Monster m = new Monster(monstruos[random.nextInt(4)], Dice.randomIntelligence() , Dice.randomStrength());
                         labyrinth.addMonster(row, col, m);
                         monsters.add(m);
                         break;
@@ -298,7 +300,7 @@ public class Game {
      * También añade el indicador de nueva línea al final.
      */
     private void logNoMonster(){
-        String mensaje = "Player" + currentPlayer.getNumber() + " se ha movido a una celda vacía o no le ha sido posible moverse" + "\n";
+        String mensaje = "Player" + currentPlayer.getNumber() + " se ha movido a una celda vacía (sin monstruo) o no le ha sido posible moverse" + "\n";
         log += mensaje;
     }
 

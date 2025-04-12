@@ -69,7 +69,7 @@ public class Monster {
      */
     @Override
     public String toString() {
-        String str = "M[ " + name + "; HP:" + health + "; SP:" + strength + "; IP:"
+        String str = "M[" + name + "; HP:" + health + "; SP:" + strength + "; IP:"
                      + intelligence + "; POS(" + row + "," + col + ")]";
         return str;
     }
