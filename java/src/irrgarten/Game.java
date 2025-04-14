@@ -204,7 +204,7 @@ public class Game {
 
     private GameCharacter combat(Monster monster){
         int rounds = 0;
-
+        
         GameCharacter winner = GameCharacter.PLAYER;
         float playerAttack = currentPlayer.attack();
         boolean lose = monster.defend(playerAttack);
