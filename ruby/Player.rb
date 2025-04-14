@@ -55,8 +55,16 @@ module Irrgarten
       @health<=0
     end
 
-    def move(direction,valid_moves)
-      # P3
+    def move(direction, valid_moves)
+      size = valid_moves.size
+      contained = valid_moves.include?(direction)
+      
+      if size > 0 && !contained
+        first_element = valid_moves.first
+        return first_element
+      else
+        return direction
+      end
     end
   
     def attack
@@ -64,11 +72,25 @@ module Irrgarten
     end
 
     def defend(received_attack)
-      # P3, depende de la implementación de manage_hit
+      manage_hit(received_attack)
     end
 
     def receive_reward
-      # P3
+      w_reward = Dice.weapons_reward
+      s_reward = Dice.shields_reward
+
+      w_reward.times do
+        wnew = new_weapon
+        receive_weapon(wnew)
+      end
+
+      s_reward.times do
+        snew = new_shield
+        receive_shield(snew)
+      end
+
+      extra_health = Dice.health_reward
+      @health += extra_health
     end
 
     def to_string
@@ -79,11 +101,19 @@ module Irrgarten
     private  # Métodos privados
 
     def receive_weapon(w)
-      # P3
+      @weapons.delete_if { |wi| wi.discard }
+      
+      if @weapons.size < @@MAX_WEAPON
+        @weapons.push(w)
+      end
     end
     
     def receive_shield(s)
-      # P3
+      @shields.delete_if { |si| si.discard }
+
+      if @shields.size < @@MAX_SHIELDS
+        @shields.push(s)
+      end
     end
 
     def new_weapon
@@ -116,7 +146,22 @@ module Irrgarten
     end
 
     def manage_hit(received_attack)
-      # P3
+      defense = defensive_energy
+      if defense < received_attack
+        got_wounded
+        inc_consecutive_hits
+      else
+        reset_hits
+      end
+
+      if @consucutive_hits == @@HTIS2LOSE || dead
+        reset_hits
+        lose = true
+      else
+        lose = false
+      end
+
+      lose
     end
 
     def reset_hits

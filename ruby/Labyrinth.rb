@@ -36,7 +36,10 @@ module Irrgarten
     #Métodos de instancia públicos
     public
     def spread_players (players)
-      # P3
+      players.each do |p|
+        pos = random_empty_pos
+        put_player_2D(-1, -1, pos[@@ROW], pos[@@COL], p)
+      end
     end
 
     # Devuelve true si hay un jugador en la casilla de salida, false en caso contrario.
@@ -110,8 +113,26 @@ module Irrgarten
 
     end
 
-    def valid_moves (row, col)
-      # P3
+    def valid_moves(row, col)
+      output = []
+      
+      if can_step_on(row - 1, col)
+        output.push(:up)
+      end
+      
+      if can_step_on(row + 1, col)
+        output.push(:down)
+      end
+      
+      if can_step_on(row, col - 1)
+        output.push(:left)
+      end
+      
+      if can_step_on(row, col + 1)
+        output.push(:right)
+      end
+      
+      output
     end
 
 
