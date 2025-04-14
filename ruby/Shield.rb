@@ -9,14 +9,14 @@ module Irrgarten
     public
     
     def initialize(protection, uses)
-      @protection = protection.tp_f
+      @protection = protection.to_f
       @uses = uses.to_i
     end
   
     def protect
       if @uses > 0
         @uses -= 1
-        return @@protection
+        return @protection
       else return 0
       end
     end

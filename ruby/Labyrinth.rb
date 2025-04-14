@@ -12,7 +12,7 @@ module Irrgarten
   class Labyrinth
     
     #Atributos de clase
-    @@BLOCK_CHAR = '#'
+    @@BLOCK_CHAR = 'X'
     @@EMPTY_CHAR = '-'
     @@MONSTER_CHAR = 'M'
     @@COMBAT_CHAR = 'C'
@@ -106,7 +106,7 @@ module Irrgarten
       col = start_col
 
       while ( (pos_ok(row, col) && empty_pos(row, col)) && (length > 0) ) do
-        @labyrinth[row][col]  #en el diagrama se usa el metodo set, pero no existe
+        @labyrinth[row][col] = @@BLOCK_CHAR
         length -= 1
         row += inc_row
         col += inc_col
@@ -165,7 +165,7 @@ module Irrgarten
     # corresponde con una de estas tres opciones: casilla vacía, casilla donde habita un monstruo o salida
     # (posOK, emptyPos, monsterPos, exitPos)
     def can_step_on (row, col)
-      pos_ok(row, col) && (empty_pos(row, col) || monsterPos(row, col) || exitPos(row, col))
+      pos_ok(row, col) && (empty_pos(row, col) || monster_pos(row, col) || exit_pos(row, col))
     end
 
     # Este método solo realiza su función si la posición suministrada está dentro del laberinto. 
@@ -206,7 +206,7 @@ module Irrgarten
     def random_empty_pos
       row = Dice.random_pos(@n_rows)
       col = Dice.random_pos(@n_cols)
-      while (!empty_pos(row, col))
+      while (!empty_pos(row, col) || exit_pos(row, col))
         row = Dice.random_pos(@n_rows)
         col = Dice.random_pos(@n_cols)
       end

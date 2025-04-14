@@ -2,6 +2,7 @@
 
 require 'io/console'
 require_relative 'Directions'
+require_relative 'Player'
 
 module UI
 
@@ -63,7 +64,7 @@ module UI
       system("clear") || system("cls")  # Limpia la pantalla (UNIX o Windows)
       puts "========== IRRGARTEN =========="
       puts "¿Ganador?: #{game_state.winner}"
-      puts "Jugador actual: #{game_state.current_player}"
+      puts "Jugador actual: #{game_state.current_player+1}"
       puts
     
       puts "------ Laberinto ------"

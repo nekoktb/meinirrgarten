@@ -2,6 +2,8 @@
 
 require_relative 'Dice'
 require_relative 'Directions'
+require_relative 'Weapon'
+require_relative 'Shield'
 
 module Irrgarten  
 
@@ -12,7 +14,7 @@ module Irrgarten
     @@INITIAL_HEALTH = 10
     @@NULL_POS = -1
     @@HTIS2LOSE = 3
-    @@NAME_DEFAULT = "Player#"
+    @@NAME_DEFAULT = "Player"
 
     def initialize(number, intelligence, strength)
       @number = number
@@ -22,7 +24,7 @@ module Irrgarten
       @health = @@INITIAL_HEALTH
       @row = @@NULL_POS
       @col = @@NULL_POS
-      @consucutive_hits = 0
+      @consecutive_hits = 0
       @weapons = Array.new
       @shields = Array.new
     end
@@ -68,7 +70,7 @@ module Irrgarten
     end
   
     def attack
-      return @strength + sumWeapons
+      return @strength + sum_weapons
     end
 
     def defend(received_attack)
@@ -93,8 +95,11 @@ module Irrgarten
       @health += extra_health
     end
 
-    def to_string
-      "P[#{@name} (HP: #{@health}; Base_SP: #{@strength}; Weapon_Sp: #{sum_weapons}; IP: #{@intelligence}); Shield: #{sum_shields};POS:{#{@row},#{@col}}]"
+    def to_s
+      "[" + @name + ": (HP: " + @health.to_s + 
+      "; Base_SP: " + @strength.to_s + " + Weapons_SP: " + sum_weapons.to_s +
+      "; IP: " + @intelligence.to_s + " + Shield:" + sum_shields.to_s +
+      "); POS:{" + @row.to_s + "," + @col.to_s + "}]"
     end
 
 
@@ -173,7 +178,7 @@ module Irrgarten
     end
 
     def inc_consecutive_hits
-      @consucutive_hits += 1
+      @consecutive_hits += 1
     end
 
   end #class Player
