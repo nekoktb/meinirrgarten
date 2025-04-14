@@ -3,6 +3,8 @@
 require_relative 'Orientation'
 require_relative 'Directions'
 require_relative 'Dice'
+require_relative 'Player'
+require_relative 'Monster'
 
 
 module Irrgarten

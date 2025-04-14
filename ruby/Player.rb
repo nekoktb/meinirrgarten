@@ -46,9 +46,9 @@ module Irrgarten
       @number
     end
 
-    def pos=row,col
-      @row=row
-      @col=col
+    def pos(row, col)
+      @row = row
+      @col = col
     end
 
     def dead
