@@ -1,5 +1,7 @@
 #encoding: utf-8
 
+require_relative 'Directions'
+
 module Irrgarten
 
 

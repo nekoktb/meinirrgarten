@@ -30,9 +30,9 @@ public class Game {
         this.log = "";
         this.players = new ArrayList<>();
         this.monsters = new ArrayList<>();
-        //La inicialización de labyrinth debería hacerse en configureLabyrinth() para meter literales
 
-        //Lo de abajo debe hacerlo el configureLabyrinth?????
+        //La inicialización de labyrinth debería hacerse en configureLabyrinth() para meter literales
+        
         for (int i = 0; i < nPlayers; i++) {
             players.add(new Player( (char)(i+'0') , Dice.randomIntelligence() , Dice.randomStrength() )); 
         }

@@ -56,7 +56,10 @@ public class Labyrinth {
     public void spreadPlayers(ArrayList<Player> players) {
         // P3
         for (Player p : players) {
-            int[] pos = randomEmptyPos();
+            int[] pos;
+            do {
+                pos = randomEmptyPos();
+            } while (pos[ROW] == exitRow && pos[COL] == exitCol);
             putPlayer2D(-1, -1, pos[ROW], pos[COL], p);
         }
     }
@@ -167,6 +170,7 @@ public class Labyrinth {
      * @return Un array de direcciones válidas.
      */
     public ArrayList<Directions> validMoves(int row, int col) {
+        //p3
         ArrayList<Directions> output = new ArrayList<>();
         
         if (canStepOn(row + 1, col)) {
