@@ -246,7 +246,7 @@ module Irrgarten
         end
 
         @players[row][col] = player
-        player.setPos(row, col)
+        player.pos(row, col)
 
       end
 
