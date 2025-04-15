@@ -165,7 +165,7 @@ module Irrgarten
     # corresponde con una de estas tres opciones: casilla vacía, casilla donde habita un monstruo o salida
     # (posOK, emptyPos, monsterPos, exitPos)
     def can_step_on (row, col)
-      pos_ok(row, col) && (empty_pos(row, col) || monster_pos(row, col) || exit_pos(row, col))
+      pos_ok(row, col) && ((empty_pos(row, col) || monster_pos(row, col) || exit_pos(row, col)))
     end
 
     # Este método solo realiza su función si la posición suministrada está dentro del laberinto. 
@@ -203,6 +203,7 @@ module Irrgarten
     # Utilizando el dado, genera una posición aleatoria en el laberinto (fila y columna) 
     # asegurando que esta esté vacía. Genera internamente posiciones hasta que se cumple esta restricción 
     # y una vez generada se devuelve. Si no hay posiciones vacías se producirá un bucle infinito.
+    # NOTA: cuenta EXIT como ocupada
     def random_empty_pos
       row = Dice.random_pos(@n_rows)
       col = Dice.random_pos(@n_cols)

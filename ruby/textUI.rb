@@ -64,7 +64,7 @@ module UI
       system("clear") || system("cls")  # Limpia la pantalla (UNIX o Windows)
       puts "========== IRRGARTEN =========="
       puts "¿Ganador?: #{game_state.winner}"
-      puts "Jugador actual: #{game_state.current_player+1}"
+      puts "Jugador actual: #{game_state.current_player}"
       puts
     
       puts "------ Laberinto ------"

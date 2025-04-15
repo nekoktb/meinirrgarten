@@ -259,13 +259,13 @@ public class Labyrinth {
     }
 
     /**
-     * @brief Verifica si se puede pisar una posición.
+     * @brief Verifica si se puede pisar una posición. (casilla vacía, casilla donde habita un monstruo o salida)
      * @param row Fila a verificar.
      * @param col Columna a verificar.
      * @return true si se puede pisar, false en caso contrario.
      */
     private boolean canStepOn(int row, int col) {
-        return posOK(row, col) && (emptyPos(row, col) || exitPos(row, col) || monsterPos(row, col));
+        return posOK(row, col) && ((emptyPos(row, col) || exitPos(row, col) || monsterPos(row, col)));
     }
 
     /**

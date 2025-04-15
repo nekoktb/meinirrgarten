@@ -4,7 +4,7 @@ require_relative 'Dice'
 require_relative 'GameCharacter'
 require_relative 'GameState'
 
-#Los de aquí abajo???????????????? son ilegales??
+
 require_relative 'Player' 
 require_relative 'Labyrinth'
 require_relative 'Monster'
@@ -25,7 +25,7 @@ module Irrgarten
       @players = []  # Contenedor de jugadores
 
       nplayers.times do |i|
-        player = Player.new((i+1).to_s, Dice.random_intelligence, Dice.random_strength)
+        player = Player.new((i).to_s, Dice.random_intelligence, Dice.random_strength)
         @players << player
       end
 
@@ -55,6 +55,7 @@ module Irrgarten
     #     Si el juego no ha terminado, se pasa al siguiente jugador y se devuelve false
     def next_step(preferred_direction)
       # P3
+      @log = ""
       if !@current_player.dead()
 
         direction = actual_direction(preferred_direction)
@@ -113,6 +114,8 @@ module Irrgarten
           ['X', 'X', 'X', 'X', '-', 'X', 'M'],
           ['X', '-', 'M', '-', '-', 'X', 'E']
       ]
+      monstruos = ["Bombardino Crocodilo", "Bombardini Guzzini", "Tun Tun Tun Sahur", "Tralalero Tralala"]
+      random = Random.new
 
       base.each_with_index do |row, r|
           row.each_with_index do |cell, c|
@@ -120,7 +123,7 @@ module Irrgarten
               when 'X' # Muro
                   @labyrinth.add_block(Orientation::HORIZONTAL, r, c, 1)
               when 'M' # Monstruo
-                  monster = Monster.new("Bombardiro Crocodilo", Dice.random_intelligence, Dice.random_strength)
+                  monster = Monster.new(monstruos[random.rand(4)], Dice.random_intelligence, Dice.random_strength)
                   @labyrinth.add_monster(r, c, monster)
                   @monsters << monster
               end

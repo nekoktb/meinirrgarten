@@ -111,7 +111,7 @@ public class Game {
         monster_cad+= monsters.get(monsters.size()-1).toString();
         
 
-        GameState gameState= new GameState(labyrinth.toString() , players_cad, monster_cad, currentPlayerIndex, finished() , log  );
+        GameState gameState= new GameState(labyrinth.toString() , players_cad, monster_cad, currentPlayerIndex, finished() , log );
 
 
         return gameState;
