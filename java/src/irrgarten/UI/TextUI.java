@@ -52,8 +52,7 @@ public class TextUI {
     
     public void showGame(GameState gameState) {  
 
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        System.out.println();
         System.out.println("========== IRRGARTEN ==========");
         System.out.println("¿Ganador?: " + gameState.getWinner());
         System.out.println("Jugador actual: " + gameState.getCurrentPlayer());
@@ -70,6 +69,9 @@ public class TextUI {
         System.out.println("------ Registro ------");
         System.out.println(gameState.getLog());
         System.out.println("===============================");
+        System.out.println();
+
+
     }
     
 }

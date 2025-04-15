@@ -61,7 +61,8 @@ module UI
 
     # Método para mostrar el estado del juego
     def show_game(game_state)
-      system("clear") || system("cls")  # Limpia la pantalla (UNIX o Windows)
+      #system("clear") || system("cls")  # Limpia la pantalla (UNIX o Windows)
+      puts
       puts "========== IRRGARTEN =========="
       puts "¿Ganador?: #{game_state.winner}"
       puts "Jugador actual: #{game_state.current_player}"
@@ -85,6 +86,8 @@ module UI
       puts game_state.log
     
       puts "==============================="
+      puts 
+
     end # show_game
 
   end # class TextUI
