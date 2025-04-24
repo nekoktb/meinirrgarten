@@ -96,10 +96,15 @@ module Irrgarten
     end
 
     def to_s
+
+      weapon_strings = @weapons.map(&:to_s).join(", ")
+      shield_strings = @shields.map(&:to_s).join(", ")
+    
+
       "[" + @name + ": (HP: " + @health.to_s + 
-      "; Base_SP: " + @strength.to_s + " + Weapons_SP: " + sum_weapons.to_s +
-      "; IP: " + @intelligence.to_s + " + Shield:" + sum_shields.to_s +
-      "); POS:{" + @row.to_s + "," + @col.to_s + "}]"
+      "; Base_SP: " + @strength.to_s + "; IP: " + @intelligence.to_s +
+      "; Weapons: [#{weapon_strings}]; Shields: [#{shield_strings}]" + 
+      "; " + "POS:{" + @row.to_s + "," + @col.to_s + "}]"
     end
 
 
