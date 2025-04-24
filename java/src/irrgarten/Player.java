@@ -133,7 +133,16 @@ public class Player {
     
     @Override
     public String toString() {
-        return "[" + name + ": (HP: " + health + "; Base_SP: " + strength + " + Weapons_SP: " + sumWeapons() + "; IP: " + intelligence + " + Shield:"+ sumShields() + "); POS:{" + row + "," + col + "}]";
+        String cad = "[" + name + ": (HP: " + health + "; SP: " + strength + "; IP: " + intelligence + "); POS:{" + row + "," + col + "}]";
+        cad += "\n\tWeapons: \n";
+        for (int i = 0; i < weapons.size(); i++) {
+            cad += "\t\t" + weapons.get(i).toString() + "\n";
+        }
+        cad += "\tShields: \n";
+        for (int i = 0; i < shields.size(); i++) {
+            cad += "\t\t" + shields.get(i).toString() + "\n";
+        }
+        return cad;
     }
 
 
