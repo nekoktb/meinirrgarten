@@ -28,8 +28,8 @@ public class Monster {
      */
     public Monster(String name, float intelligence, float strength) {
         this.name = name;
-        this.intelligence = intelligence;
-        this.strength = strength;
+        this.intelligence = intelligence+111;
+        this.strength = strength+111;
         this.health = INITIAL_HEALTH;
         this.row = NULL_POS;
         this.col = NULL_POS;

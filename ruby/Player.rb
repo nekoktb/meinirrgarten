@@ -159,7 +159,7 @@ module Irrgarten
         reset_hits
       end
 
-      if @consucutive_hits == @@HTIS2LOSE || dead
+      if @consecutive_hits == @@HTIS2LOSE || dead
         reset_hits
         lose = true
       else
@@ -170,7 +170,7 @@ module Irrgarten
     end
 
     def reset_hits
-      @consucutive_hits = 0
+      @consecutive_hits = 0
     end
 
     def got_wounded

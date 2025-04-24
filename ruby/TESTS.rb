@@ -6,7 +6,7 @@ require_relative 'controller'
 
 
 
-game = Irrgarten::Game.new(2)
+game = Irrgarten::Game.new(1)
 
 
 ui = UI::TextUI.new
