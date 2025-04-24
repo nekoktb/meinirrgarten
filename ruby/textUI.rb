@@ -8,6 +8,7 @@ module UI
 
   class TextUI
 
+
     #https://gist.github.com/acook/4190379
     def read_char
       STDIN.echo = false
@@ -24,6 +25,8 @@ module UI
     
       return input
     end
+
+    
 
     def next_move
       print "Where? "
