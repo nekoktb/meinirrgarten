@@ -1,8 +1,8 @@
 #encoding: utf-8
 
 require 'io/console'
-require_relative 'Directions'
-require_relative 'Player'
+require_relative '../Directions'
+require_relative '../Player'
 
 module UI
 
@@ -87,6 +87,10 @@ module UI
       puts
       puts "------ Registro ------"
       puts game_state.log
+
+      if game_state.winner
+        puts "\n¡Ganador de la partida: Player " + game_state.current_player.to_s + "!"
+      end
     
       puts "==============================="
       puts 
