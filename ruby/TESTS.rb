@@ -1,12 +1,12 @@
 #encoding: utf-8
 
 require_relative 'Game'
-require_relative 'textUI'
-require_relative 'controller'
+require_relative 'UI/textUI'
+require_relative 'Controller/controller'
 
 
 
-game = Irrgarten::Game.new(1)
+game = Irrgarten::Game.new(2)
 
 
 ui = UI::TextUI.new

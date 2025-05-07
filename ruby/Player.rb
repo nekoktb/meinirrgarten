@@ -102,7 +102,7 @@ module Irrgarten
     
 
       "[" + @name + ": (HP: " + @health.to_s + 
-      "; Base_SP: " + @strength.to_s + "; IP: " + @intelligence.to_s +
+      "; SP: " + @strength.to_s + "; IP: " + @intelligence.to_s +
       "; Weapons: [#{weapon_strings}]; Shields: [#{shield_strings}]" + 
       "; " + "POS:{" + @row.to_s + "," + @col.to_s + "}]"
     end
