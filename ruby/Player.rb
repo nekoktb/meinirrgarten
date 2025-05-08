@@ -4,29 +4,36 @@ require_relative 'Dice'
 require_relative 'Directions'
 require_relative 'Weapon'
 require_relative 'Shield'
+require_relative 'LabyrinthCharacter'
 
 module Irrgarten  
 
-  class Player
+  class Player < LabyrinthCharacter
+
+    public_class_method :new  # Clase instanciable pero su superclase es abstracta
 
     @@MAX_WEAPON = 2
     @@MAX_SHIELDS = 3
     @@INITIAL_HEALTH = 10
-    @@NULL_POS = -1
     @@HTIS2LOSE = 3
+
     @@NAME_DEFAULT = "Player"
 
     def initialize(number, intelligence, strength)
       @number = number
-      @name = @@NAME_DEFAULT + number.to_s
-      @intelligence = intelligence
-      @strength = strength
-      @health = @@INITIAL_HEALTH
-      @row = @@NULL_POS
-      @col = @@NULL_POS
       @consecutive_hits = 0
       @weapons = Array.new
       @shields = Array.new
+
+      super(@@NAME_DEFAULT + number.to_s, intelligence, strength, @@INITIAL_HEALTH)
+    end
+
+    def copy(other)
+      super(other)
+      @number = other.number
+      @consecutive_hits = other.consecutive_hits
+      @weapons = other.weapons
+      @shields = other.shields
     end
 
     def resurrect
@@ -36,25 +43,8 @@ module Irrgarten
       reset_hits
     end
 
-    def row
-      @row
-    end
-
-    def col
-      @col
-    end
-
     def number
       @number
-    end
-
-    def pos(row, col)
-      @row = row
-      @col = col
-    end
-
-    def dead
-      @health<=0
     end
 
     def move(direction, valid_moves)
@@ -69,10 +59,12 @@ module Irrgarten
       end
     end
   
+    # tiene que ser redefinado pues en la superclase es un método abstracto
     def attack
       return @strength + sum_weapons
     end
 
+    # tiene que ser redefinido pues en la superclase es un método abstracto
     def defend(received_attack)
       manage_hit(received_attack)
     end
@@ -100,11 +92,8 @@ module Irrgarten
       weapon_strings = @weapons.map(&:to_s).join(", ")
       shield_strings = @shields.map(&:to_s).join(", ")
     
-
-      "[" + @name + ": (HP: " + @health.to_s + 
-      "; SP: " + @strength.to_s + "; IP: " + @intelligence.to_s +
-      "; Weapons: [#{weapon_strings}]; Shields: [#{shield_strings}]" + 
-      "; " + "POS:{" + @row.to_s + "," + @col.to_s + "}]"
+      player_string = ("P" + super + "\n\tWeapons: " + weapon_strings + "\n\tShields: " + shield_strings)
+      return player_string 
     end
 
 
@@ -134,6 +123,8 @@ module Irrgarten
         return Shield.new(Dice.shield_power, Dice.uses_left)
     end
 
+    protected # Métodos protegidos
+
     def sum_weapons
       sum = 0
       @weapons.each do |weapon|
@@ -154,6 +145,8 @@ module Irrgarten
     def defensive_energy
       return @intelligence + sum_shields
     end
+
+    private # Métodos privados
 
     def manage_hit(received_attack)
       defense = defensive_energy
@@ -176,10 +169,6 @@ module Irrgarten
 
     def reset_hits
       @consecutive_hits = 0
-    end
-
-    def got_wounded
-      @health -= 1
     end
 
     def inc_consecutive_hits

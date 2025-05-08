@@ -70,7 +70,7 @@ module Irrgarten
       if pos_ok(row, col) && empty_pos(row, col)
         @labyrinth[row][col] = @@MONSTER_CHAR
         @monsters[row][col] = monster
-        monster.setPos(row, col)
+        monster.pos(row, col)
       end
     end 
 

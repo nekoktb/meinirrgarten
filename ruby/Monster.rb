@@ -6,25 +6,16 @@ require_relative 'Dice'
 module Irrgarten
 
 
-  class Monster
+  class Monster < LabyrinthCharacter
+
+    public_class_method :new  # Clase instanciable pero su superclase es abstracta
 
     @@INITIAL_HEALTH=5
-    @@NULL_POS=-1
-  
-    def initialize (name, inteligence, strength)
-      @name = name
-      @inteligence = inteligence
-      @strength = strength
-      @health = @@INITIAL_HEALTH
-      @row = @@NULL_POS
-      @col = @@NULL_POS
-    end
-  
     
-    def dead #True si el monstruo esta muerto
-      @health<=0
+    def initialize(name, intelligence, strength)
+      super(name, intelligence, strength, @@INITIAL_HEALTH)
     end
-  
+    
     def attack #Devuelve la intensidad del ataque
       Dice.intensity(@strength)
     end
@@ -41,20 +32,10 @@ module Irrgarten
       is_dead
     end
   
-    def setPos(row, col) #Establece la posición del monstruo
-      @row=row
-      @col=col
-    end 
-  
     def to_s #Devuelve una cadena con la información del monstruo
-      "M[#{@name} (HP: #{@health}; SP: #{@strength}; IP: #{@inteligence}); POS:{#{@row},#{@col}}]"
+      ("M" + super)
     end  
     
-    def got_wounded 
-      @health -= 1 
-    end
-  
-    private :got_wounded # metodo de INSTANCIA privado
   
   end #class
 
