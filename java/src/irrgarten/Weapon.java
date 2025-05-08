@@ -32,11 +32,5 @@ public class Weapon extends CombatElement {
         return ("W"+super.toString());
     }
 
-    /**
-     * @brief Determina si el arma debe ser descartada.
-     * @return `true` si el arma debe ser descartada, `false` en caso contrario.
-     */
-    public boolean discard() {
-        return super.discard();
-    }
+    //el discard es igual que el padre asi que no hace falta ?
 }

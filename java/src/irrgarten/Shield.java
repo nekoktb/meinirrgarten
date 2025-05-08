@@ -32,11 +32,6 @@ public class Shield extends CombatElement {
         return ("S"+super.toString()); 
     }
 
-    /**
-     * @brief Determina si el escudo debe ser descartado.
-     * @return `true` si el escudo debe ser descartado, `false` en caso contrario.
-     */
-    public boolean discard() {
-        return super.discard();
-    }
+    
+    //el discard es igual que el padre asi que no hace falta ?
 }

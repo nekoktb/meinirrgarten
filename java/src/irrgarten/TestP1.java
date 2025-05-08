@@ -19,7 +19,5 @@ public class TestP1 {
         
         controller.play();
             
-        
-       
     }
 }
