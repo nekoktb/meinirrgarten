@@ -93,6 +93,16 @@ module Irrgarten
     def self.discard_element(uses_left)
       @@generator.rand(1.0) >= (uses_left.to_f/@@MAX_USES);
     end
+
+    def self.next_setp(preference, valid_moves, intelligence)
+      if (generator.rand(1.0)*@@MAX_INTELLIGENCE < intelligence)
+        # Si la inteligencia es mayor que un número aleatorio, el jugador se mueve en la dirección preferida
+        preference
+      else
+        # Si no, el jugador se mueve en una dirección aleatoria entre las válidas
+        valid_moves[generator.rand(valid_moves.length)]
+      end
+    end
     
     
   end
