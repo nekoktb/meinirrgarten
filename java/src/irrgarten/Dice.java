@@ -4,6 +4,7 @@
  */
 package irrgarten;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -132,5 +133,22 @@ public class Dice {
      */
     public static boolean discardElement(int usesLeft) {
         return generator.nextFloat() >= ((float) usesLeft / MAX_USES);
+    }
+
+    /**
+     * @brief Genera un paso aleatorio basado en la inteligencia y las preferencias.
+     * @param preference Preferencia de dirección.
+     * @param validMoves Lista de movimientos válidos.
+     * @param intelligence Nivel de inteligencia del jugador.
+     * @return La dirección del siguiente paso.
+     */
+    public static Directions nextStep(Directions preference, ArrayList<Directions> validMoves, float intelligence){
+        if ( randomIntelligence() < intelligence){
+            return preference;
+        }
+        else{
+            int randomIndex = generator.nextInt(validMoves.size());
+            return validMoves.get(randomIndex);
+        }
     }
 }
