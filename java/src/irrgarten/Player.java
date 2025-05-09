@@ -26,6 +26,9 @@ public class Player {
     private ArrayList<Weapon> weapons;
     private ArrayList<Shield> shields;
 
+    private ShieldCardDeck shieldCardDeck;
+    private WeaponCardDeck weaponCardDeck;
+
     //Constructor:
     public Player(char number, float intelligence, float strength) {
         this.number = number;
@@ -38,6 +41,8 @@ public class Player {
         resetHits();
         this.weapons = new ArrayList<>();
         this.shields = new ArrayList<>();
+        this.shieldCardDeck = new ShieldCardDeck();
+        this.weaponCardDeck = new WeaponCardDeck();
     }
 
     //Resucita al jugador
@@ -205,13 +210,13 @@ public class Player {
 
     //Añade un arma al jugador
     private Weapon newWeapon() {
-        Weapon weapon = new Weapon(Dice.weaponPower(), Dice.usesLeft());
+        Weapon weapon = this.weaponCardDeck.nextCard();
         return weapon;
     }
 
     //Añade un escudo al jugador
     private Shield newShield() {
-        Shield shield = new Shield(Dice.shieldPower(), Dice.usesLeft());
+        Shield shield = this.shieldCardDeck.nextCard();
         return shield;
     }
     
