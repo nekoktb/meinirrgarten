@@ -352,7 +352,9 @@ public class Labyrinth {
 
         return output; 
     }
-    protected void setPlayerPos(int row, int col, Player player) {
+ 
+        
+    public void setPlayer(int row, int col, Player player) {
         if (posOK(row, col)) {
             players[row][col] = player;
         }

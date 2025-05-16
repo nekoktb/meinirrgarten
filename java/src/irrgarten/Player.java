@@ -7,7 +7,7 @@ public class Player extends LabyrinthCharacter {
     //Atributos privados de clase:
     private static final int MAX_WEAPONS = 2;
     private static final int MAX_SHIELDS = 3;
-    private static final int INITIAL_HEALTH = 10;
+    private static final int INITIAL_HEALTH = 1;
     private static final int HIT2LOSE = 3;
 
     private static final String NAME_DEFAULT = "Player";
