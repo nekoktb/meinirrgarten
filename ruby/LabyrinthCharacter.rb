@@ -20,16 +20,13 @@ module Irrgarten
         pos(@@NULL_POS, @@NULL_POS) 
     end
 
-    def self.copy(character)
-      new(character.name, character.intelligence, character.strength, character.health)
-    end
     def copy(other)
       @name = other.name
       @intelligence = other.intelligence
       @strength = other.strength
       @health = other.health
       pos(other.row, other.col)
-  end
+    end
 
     def dead
       @health <= 0
@@ -75,13 +72,7 @@ module Irrgarten
       @health -= 1
     end
 
-    public # METODOS ABSTRACTOS
-    def attack
-      raise NotImplementedError, "Este es un método abstracto, debe ser implementado y usado por las subclases."
-    end
-    def defend(received_attack)
-      raise NotImplementedError, "Este es un método abstracto, debe ser implementado y usado por las subclases."
-    end
+    # METODOS ABSTRACTOS: attack y defend
 
   end # class
 end # module
