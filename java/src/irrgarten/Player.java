@@ -25,6 +25,17 @@ public class Player extends LabyrinthCharacter {
 
     //Constructor:
     public Player(char number, float intelligence, float strength) {
+        this.number = number;
+        this.name = NAME_DEFAULT + number;
+        this.intelligence = intelligence;
+        this.strength = strength;
+        this.health = INITIAL_HEALTH;
+        this.row = NULL_POS;
+        this.col = NULL_POS;
+        resetHits();
+        this.weapons = new ArrayList<>();
+        this.shields = new ArrayList<>();
+        this.shieldCardDeck = new ShieldCardDeck();
         this.weaponCardDeck = new WeaponCardDeck();
     }
 
