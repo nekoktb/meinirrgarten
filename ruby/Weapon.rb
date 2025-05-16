@@ -1,20 +1,15 @@
 #encoding: utf-8
 
 require_relative 'Dice'
+require_relative 'CombatElement'
 
 module Irrgarten
 
-  class Weapon
+  class Weapon < CombatElement
 
-    public
-  
-    def initialize(power, uses)
-      @power = power.to_f
-      @uses = uses.to_i
-    end
-  
+    
     def attack
-      produce_effect
+      self.produce_effect
     end
   
     def to_s

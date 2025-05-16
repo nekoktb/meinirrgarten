@@ -5,7 +5,6 @@ require_relative 'Dice'
 module Irrgarten
 
   class CombatElement
-    private_class_method :new
 
     public
 
@@ -19,7 +18,7 @@ module Irrgarten
     end
 
     def to_s
-      "[#{@power}, #{@uses}]"
+      "[#{@effect}, #{@uses}]"
     end
 
     protected

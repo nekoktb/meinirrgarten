@@ -1,19 +1,16 @@
 #encoding: utf-8
 
 require_relative 'Dice'
+require_relative 'CombatElement'
 
 module Irrgarten
 
   class Shield < CombatElement
 
     public
-    
-    def initialize(protection, uses)
-     super(protection, uses)
-    end
-  
+
     def protect
-     produce_effect
+     self.produce_effect
     end
   
     def to_s
