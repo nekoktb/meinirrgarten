@@ -32,6 +32,16 @@ public class Player extends LabyrinthCharacter {
         this.shieldCardDeck = new ShieldCardDeck();
         this.weaponCardDeck = new WeaponCardDeck();
     }
+    
+    public Player(Player other) {
+        super(other);
+        this.number = other.number;
+        this.consecutiveHits = other.consecutiveHits;
+        this.weapons = other.weapons;
+        this.shields = other.shields;
+        this.shieldCardDeck = other.shieldCardDeck;
+        this.weaponCardDeck = other.weaponCardDeck;
+    }
 
     //Resucita al jugador
     public void resurrect() {
