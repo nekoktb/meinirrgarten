@@ -258,6 +258,13 @@ module Irrgarten
 
     end # put_player_2D
     
+    public
+
+    def set_player (row, col, player)
+      if pos_ok(row, col)
+        @players[row][col] = player
+      end
+    end
 
 
   end # class Labirinth

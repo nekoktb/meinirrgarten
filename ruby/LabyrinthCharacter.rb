@@ -6,7 +6,7 @@ module Irrgarten
   # Clase abstracta (NO INSTANCIABLE en ruby, que no tiene abstractas) que representa un personaje del laberinto
   class LabyrinthCharacter
 
-    private_class_method :new  # Clase no instanciable
+   # private_class_method :new  # Clase no instanciable
     
     @@NULL_POS = -1     #Posición inválida
 
@@ -27,6 +27,8 @@ module Irrgarten
       @health = other.health
       pos(other.row, other.col)
     end
+
+    attr_reader :name
 
     def dead
       @health <= 0
@@ -52,7 +54,7 @@ module Irrgarten
 
     protected
 
-    def inteligence
+    def intelligence
       @intelligence
     end
     
@@ -64,7 +66,7 @@ module Irrgarten
       @health
     end
 
-    def health(health)
+    def set_health(health)
       @health = health
     end
 

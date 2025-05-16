@@ -8,12 +8,12 @@ module Irrgarten
 
   class Monster < LabyrinthCharacter
 
-    public_class_method :new  # Clase instanciable pero su superclase es abstracta
+    #public_class_method :new  # Clase instanciable pero su superclase es abstracta
 
     @@INITIAL_HEALTH=5
     
     def initialize(name, intelligence, strength)
-      super(name, intelligence, strength, @@INITIAL_HEALTH)
+      super(name, intelligence+10, strength+10, @@INITIAL_HEALTH)
     end
     
     def attack #Devuelve la intensidad del ataque

@@ -10,11 +10,11 @@ module Irrgarten
 
   class Player < LabyrinthCharacter
 
-    public_class_method :new  # Clase instanciable pero su superclase es abstracta
+    #public_class_method :new  # Clase instanciable pero su superclase es abstracta
 
     @@MAX_WEAPON = 2
     @@MAX_SHIELDS = 3
-    @@INITIAL_HEALTH = 10
+    @@INITIAL_HEALTH = 1
     @@HTIS2LOSE = 3
 
     @@NAME_DEFAULT = "Player"
@@ -28,6 +28,10 @@ module Irrgarten
       super(@@NAME_DEFAULT + number.to_s, intelligence, strength, @@INITIAL_HEALTH)
     end
 
+    protected
+    attr_reader :weapons, :shields
+    attr_reader :consecutive_hits
+    public
     def copy(other)
       super(other)
       @number = other.number

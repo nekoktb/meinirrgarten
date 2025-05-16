@@ -8,6 +8,7 @@ require_relative 'GameState'
 require_relative 'Player' 
 require_relative 'Labyrinth'
 require_relative 'Monster'
+require_relative 'FuzzyPlayer'
 
 
 
@@ -199,7 +200,11 @@ module Irrgarten
       resurrect = Dice.resurrect_player
 
       if resurrect
-        @current_player.resurrect
+        fuzzy_player = FuzzyPlayer.new(@current_player)
+        fuzzy_player.resurrect
+        @players[@current_player_index] = fuzzy_player
+        @current_player = fuzzy_player
+        @labyrinth.set_player(@current_player.row, @current_player.col, fuzzy_player)
         log_resurrected
       else
         log_player_skip_turn

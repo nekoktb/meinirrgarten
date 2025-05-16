@@ -241,7 +241,7 @@ public class Game {
         if (resurrect) {
             FuzzyPlayer fuzzyPlayer = new FuzzyPlayer(currentPlayer);
             fuzzyPlayer.resurrect();
-            this.players.set(0, fuzzyPlayer);
+            this.players.set(currentPlayerIndex, fuzzyPlayer);
             this.currentPlayer = fuzzyPlayer;
             labyrinth.setPlayer(currentPlayer.getRow(), currentPlayer.getCol(), fuzzyPlayer);
 
