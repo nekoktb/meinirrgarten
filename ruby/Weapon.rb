@@ -14,19 +14,12 @@ module Irrgarten
     end
   
     def attack
-      if @uses > 0
-        @uses -= 1
-        return @power
-      else return 0
-      end
+      produce_effect
     end
   
     def to_s
-      "W[#{@power}, #{@uses}]"
-    end
-  
-    def discard
-      Dice.discard_element(@uses)
+      string = ("W" + super)
+      return string
     end
   
   end
