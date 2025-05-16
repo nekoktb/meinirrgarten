@@ -32,9 +32,7 @@ module Irrgarten
       is_dead
     end
   
-    def to_s #Devuelve una cadena con la información del monstruo
-      ("M" + super)
-    end  
+    
     
   
   end #class
