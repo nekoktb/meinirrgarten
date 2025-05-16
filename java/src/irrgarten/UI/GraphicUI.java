@@ -4,12 +4,11 @@
  */
 package irrgarten.UI;
 
+
 /**
  *
  * @author nekok
- */
-import 
-        
+ */      
         
 public class GraphicUI extends javax.swing.JFrame implements UI{
 
