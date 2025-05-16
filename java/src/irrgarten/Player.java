@@ -3,7 +3,7 @@ package irrgarten; //WHAT????????
 import java.util.ArrayList;
 
 
-public class Player {
+public class Player extends LabyrinthCharacter {
     //Atributos privados de clase:
     private static final int MAX_WEAPONS = 2;
     private static final int MAX_SHIELDS = 3;
@@ -14,13 +14,7 @@ public class Player {
     private static final int NULL_POS = -1;
 
     //Atributos privados de instancia:
-    private String name;
     private char number;
-    private float intelligence;
-    private float strength;
-    private float health;
-    private int row;
-    private int col;
     private int consecutiveHits;
 
     private ArrayList<Weapon> weapons;
@@ -31,17 +25,6 @@ public class Player {
 
     //Constructor:
     public Player(char number, float intelligence, float strength) {
-        this.number = number;
-        this.name = NAME_DEFAULT + number;
-        this.intelligence = intelligence;
-        this.strength = strength;
-        this.health = INITIAL_HEALTH;
-        this.row = NULL_POS;
-        this.col = NULL_POS;
-        resetHits();
-        this.weapons = new ArrayList<>();
-        this.shields = new ArrayList<>();
-        this.shieldCardDeck = new ShieldCardDeck();
         this.weaponCardDeck = new WeaponCardDeck();
     }
 
