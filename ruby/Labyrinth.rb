@@ -31,6 +31,7 @@ module Irrgarten
       @monsters = Array.new(rows) { Array.new(cols) { nil } }
       @players = Array.new(rows) { Array.new(cols) { nil } }
       @labyrinth = Array.new(rows) { Array.new(cols) { @@EMPTY_CHAR } }
+      @labyrinth[exit_row][exit_col] = @@EXIT_CHAR
     
     end
 

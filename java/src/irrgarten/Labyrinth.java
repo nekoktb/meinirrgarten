@@ -46,7 +46,9 @@ public class Labyrinth {
             for (int j = 0; j < nCols; j++) {
                 labyrinth[i][j] = EMPTY_CHAR;
             }
+            
         }
+        labyrinth[exitRow][exitCol] = EXIT; // Colocar la salida
     }
 
     /**
