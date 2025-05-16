@@ -239,7 +239,12 @@ public class Game {
         //P3
         boolean resurrect = Dice.resurrectPlayer();
         if (resurrect) {
-            currentPlayer.resurrect();
+            FuzzyPlayer fuzzyPlayer = new FuzzyPlayer(currentPlayer);
+            fuzzyPlayer.resurrect();
+            currentPlayer = fuzzyPlayer;
+
+            labyrinth.setPlayerPos(currentPlayer.getRow(), currentPlayer.getCol(), fuzzyPlayer);
+
             logResurrected();
         } else {
             logPlayerSkipTurn();
