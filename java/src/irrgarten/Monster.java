@@ -7,15 +7,9 @@ package irrgarten;
  * de un monstruo, incluyendo su salud, posición, fuerza, inteligencia y acciones
  * como atacar, defenderse y recibir daño.
  */
-public class Monster {
+public class Monster extends LabyrinthCharacter {
     private static final int INITIAL_HEALTH = 5; ///< Salud inicial del monstruo.
-    private static final int NULL_POS = -1; ///< Valor por defecto para posiciones no asignadas.
-    private String name; ///< Nombre del monstruo.
-    private float intelligence; ///< Nivel de inteligencia del monstruo.
-    private float strength; ///< Nivel de fuerza del monstruo.
-    private float health; ///< Salud actual del monstruo.
-    private int row; ///< Fila actual del monstruo en el laberinto.
-    private int col; ///< Columna actual del monstruo en el laberinto.
+
 
     /**
      * @brief Constructor de la clase `Monster`.
@@ -27,21 +21,9 @@ public class Monster {
      * y posiciones no asignadas.
      */
     public Monster(String name, float intelligence, float strength) {
-        this.name = name;
-        this.intelligence = intelligence;
-        this.strength = strength;
-        this.health = INITIAL_HEALTH;
-        this.row = NULL_POS;
-        this.col = NULL_POS;
+        super(name, intelligence, strength, INITIAL_HEALTH);
     }
 
-    /**
-     * @brief Verifica si el monstruo está muerto.
-     * @return `true` si la salud del monstruo es menor o igual a 0, `false` en caso contrario.
-     */
-    public boolean dead() {
-        return (health <= 0);
-    }
 
     /**
      * @brief Realiza un ataque.
@@ -49,38 +31,7 @@ public class Monster {
      *         en función de la fuerza del monstruo.
      */
     public float attack() {
-        return (Dice.intensity(strength));
-    }
-
-    /**
-     * @brief Establece la posición del monstruo en el laberinto.
-     * @param row Fila donde se colocará el monstruo.
-     * @param col Columna donde se colocará el monstruo.
-     */
-    public void setPos(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-
-    /**
-     * @brief Representa al monstruo como una cadena de texto.
-     * @return Una cadena que contiene información sobre el monstruo, incluyendo
-     *         su nombre, salud, fuerza, inteligencia y posición.
-     */
-    @Override
-    public String toString() {
-        String str = "M[" + name + "; HP:" + health + "; SP:" + strength + "; IP:"
-                     + intelligence + "; POS(" + row + "," + col + ")]";
-        return str;
-    }
-
-    /**
-     * @brief Reduce la salud del monstruo en 1 punto.
-     * 
-     * Este método se utiliza para simular que el monstruo ha recibido daño.
-     */
-    public void gotWounded() {
-        this.health--;
+        return (Dice.intensity(getStrength()));
     }
 
     /**
@@ -92,7 +43,7 @@ public class Monster {
         boolean isDead = dead();
         
         if (!isDead) {
-            float defensiveEnergy = Dice.intensity(this.intelligence);
+            float defensiveEnergy = Dice.intensity(getIntelligence());
             
             if (defensiveEnergy < receivedAttack) {
                 gotWounded();

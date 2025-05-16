@@ -8,13 +8,13 @@ abstract class LabyrinthCharacter {
     private String name;
     
     // Inteligencia
-    private int intelligence;
+    private float intelligence;
 
     // Fuerza
-    private int strength;
+    private float strength;
 
     // Salud
-    private int health;
+    private float health;
 
     // Posición
     private int row;
@@ -22,7 +22,7 @@ abstract class LabyrinthCharacter {
 
 
 
-    public LabyrinthCharacter(String name, int intelligence, int strength, int health) {
+    public LabyrinthCharacter(String name, float intelligence, float strength, float health) {
         this.name = name;
         this.intelligence = intelligence;
         this.strength = strength;
@@ -63,7 +63,7 @@ abstract class LabyrinthCharacter {
         return health;
     }
 
-    protected void setHealth(int health) {
+    protected void setHealth(float health) {
         this.health = health;
     }
 
@@ -87,5 +87,3 @@ abstract class LabyrinthCharacter {
     public abstract boolean defend(float attack);
 }
     
-    
-

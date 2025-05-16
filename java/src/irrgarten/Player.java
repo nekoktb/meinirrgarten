@@ -11,7 +11,6 @@ public class Player extends LabyrinthCharacter {
     private static final int HIT2LOSE = 3;
 
     private static final String NAME_DEFAULT = "Player";
-    private static final int NULL_POS = -1;
 
     //Atributos privados de instancia:
     private char number;
@@ -25,13 +24,8 @@ public class Player extends LabyrinthCharacter {
 
     //Constructor:
     public Player(char number, float intelligence, float strength) {
+        super(NAME_DEFAULT + number, intelligence, strength, INITIAL_HEALTH);
         this.number = number;
-        this.name = NAME_DEFAULT + number;
-        this.intelligence = intelligence;
-        this.strength = strength;
-        this.health = INITIAL_HEALTH;
-        this.row = NULL_POS;
-        this.col = NULL_POS;
         resetHits();
         this.weapons = new ArrayList<>();
         this.shields = new ArrayList<>();
@@ -43,36 +37,14 @@ public class Player extends LabyrinthCharacter {
     public void resurrect() {
         weapons.clear();
         shields.clear();
-        health = INITIAL_HEALTH;
+        setHealth(INITIAL_HEALTH);
         resetHits();
     }
 
     //Consultores: 
-    //Devuelve la fila en la que se encuentra el jugador
-    public int getRow() {
-        return row;
-    }
-
-    //Devuelve la columna en la que se encuentra el jugador
-    public int getCol() {
-        return col;
-    }
-
     //Devuelve el nombre (número) del jugador
     public char getNumber() {
         return number;
-    }
-
-    //Modificadores:
-    //Establece la posición del jugador
-    public void setPos(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-
-    //Devuelve true si el jugador está muerto
-    public boolean dead() {
-        return health <= 0;
     }
 
     //Métodos de juego:
@@ -96,11 +68,13 @@ public class Player extends LabyrinthCharacter {
 
     //Ataca a un monstruo: calcula la suma de la fuerza del jugador 
     // y la suma de lo aportado por sus armas (sumWeapons).
+    @Override
     public float attack() {
-        return strength + sumWeapons();
+        return getStrength() + sumWeapons();
     }
 
     //Devuelve si el jugador se defiende o no.
+    @Override
     public boolean defend(float receivedAttack) {
         return manageHit(receivedAttack);
     }
@@ -125,14 +99,14 @@ public class Player extends LabyrinthCharacter {
         }
         int extraHealth = Dice.healthReward();
         
-        this.health += extraHealth;
+        setHealth(extraHealth + getHealth());
         
     }
 
     
     @Override
     public String toString() {
-        String cad = "[" + name + ": (HP: " + health + "; SP: " + strength + "; IP: " + intelligence + "); POS:{" + row + "," + col + "}]";
+        String cad = super.toString();
         cad += "\n\tWeapons: \n";
         for (int i = 0; i < weapons.size(); i++) {
             cad += "\t\t" + weapons.get(i).toString() + "\n";
@@ -215,7 +189,7 @@ public class Player extends LabyrinthCharacter {
     }
     
     // Calcula la suma del ataque de las armas del jugador
-    private float sumWeapons() {
+    protected float sumWeapons() {
         float sum = 0;
         for (Weapon weapon : weapons) {
             sum += weapon.attack();
@@ -224,7 +198,7 @@ public class Player extends LabyrinthCharacter {
     }
 
     // Calcula la suma de la defensa de los escudos del jugador
-    private float sumShields() {
+    protected float sumShields() {
         float sum = 0;
         for (Shield shield : shields) {
             sum += shield.protect();
@@ -233,8 +207,8 @@ public class Player extends LabyrinthCharacter {
     }
 
     // Calcula la energía defensiva (suma de la inteligencia con el aporte de los escudos (sumShields)) del jugador.
-    private float defensiveEnergy() {
-        return intelligence + sumShields();
+    protected float defensiveEnergy() {
+        return getIntelligence() + sumShields();
     }
 
 
@@ -257,11 +231,6 @@ public class Player extends LabyrinthCharacter {
     // Resetea el contador de golpes consecutivos
     private void resetHits() {
         consecutiveHits = 0;
-    }
-
-    // Decrementa en una unidad la salud del jugador.
-    private void gotWounded() {
-        health--;
     }
 
     // Incrementa en una unidad el contador de golpes consecutivos
