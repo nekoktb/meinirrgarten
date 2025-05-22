@@ -15,10 +15,11 @@ public class ShieldCardDeck extends CardDeck<Shield> {
 
 
         //Rellenar como queramos para probar primero
-        this.addCard(new Shield(1, 1));
-
-
-
+        this.addCard(new Shield(1, 5));
+        this.addCard(new Shield(2, 5));
+        this.addCard(new Shield(3, 5));
+        this.addCard(new Shield(4, 5));
+     
     }
     
 }

@@ -31,6 +31,8 @@ public class Player extends LabyrinthCharacter {
         this.shields = new ArrayList<>();
         this.shieldCardDeck = new ShieldCardDeck();
         this.weaponCardDeck = new WeaponCardDeck();
+        this.shieldCardDeck.addCards();
+        this.weaponCardDeck.addCards();
     }
     
     public Player(Player other) {
@@ -166,6 +168,8 @@ public class Player extends LabyrinthCharacter {
     private void receiveShield(Shield s) {
         //P3
 
+        
+        
         for (int i = 0; i < shields.size(); i++) {
             Shield si = shields.get(i);
             boolean discard = si.discard();
@@ -174,10 +178,9 @@ public class Player extends LabyrinthCharacter {
                 i--;
             }
         }
+        
 
-        int size = shields.size();
-
-        if (size < MAX_SHIELDS) {
+        if (shields.size() < MAX_SHIELDS) {
             shields.add(s);
         }
 

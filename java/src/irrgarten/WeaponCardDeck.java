@@ -14,7 +14,10 @@ public class WeaponCardDeck extends CardDeck<Weapon> {
         */
 
         //Rellenar como queramos para probar primero
-        this.addCard(new Weapon(1, 1));
+        this.addCard(new Weapon(1, 5));
+        this.addCard(new Weapon(2, 5));
+        this.addCard(new Weapon(3, 5));
+        this.addCard(new Weapon(4, 5));
 
 
     }

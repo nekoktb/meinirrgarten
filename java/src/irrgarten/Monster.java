@@ -8,7 +8,7 @@ package irrgarten;
  * como atacar, defenderse y recibir daño.
  */
 public class Monster extends LabyrinthCharacter {
-    private static final int INITIAL_HEALTH = 5; ///< Salud inicial del monstruo.
+    private static final int INITIAL_HEALTH = 100; ///< Salud inicial del monstruo.
 
 
     /**
@@ -21,7 +21,7 @@ public class Monster extends LabyrinthCharacter {
      * y posiciones no asignadas.
      */
     public Monster(String name, float intelligence, float strength) {
-        super(name, intelligence, strength, INITIAL_HEALTH);
+        super(name, 100, 1, INITIAL_HEALTH);
     }
 
 
