@@ -5,7 +5,7 @@
 package irrgarten;
 
 import irrgarten.Controller.Controller;
-import irrgarten.UI.TextUI;
+import irrgarten.UI.GraphicUI;
 
 /**
  *
@@ -13,8 +13,8 @@ import irrgarten.UI.TextUI;
  */
 public class TestP1 {
     public static void main(String[] args) {
-        Game game = new Game(1);
-        TextUI ui = new TextUI();
+        Game game = new Game(3);
+        GraphicUI ui = new GraphicUI();
         Controller controller = new Controller(game, ui);
         
         controller.play();
