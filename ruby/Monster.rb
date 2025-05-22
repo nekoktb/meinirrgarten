@@ -13,7 +13,7 @@ module Irrgarten
     @@INITIAL_HEALTH=5
     
     def initialize(name, intelligence, strength)
-      super(name, intelligence+10, strength+10, @@INITIAL_HEALTH)
+      super(name, intelligence, strength, @@INITIAL_HEALTH)
     end
     
     def attack #Devuelve la intensidad del ataque

@@ -21,7 +21,7 @@ public class Monster extends LabyrinthCharacter {
      * y posiciones no asignadas.
      */
     public Monster(String name, float intelligence, float strength) {
-        super(name, intelligence+10, strength+10, INITIAL_HEALTH);
+        super(name, intelligence, strength, INITIAL_HEALTH);
     }
 
 

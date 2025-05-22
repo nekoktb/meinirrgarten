@@ -14,7 +14,7 @@ module Irrgarten
 
     @@MAX_WEAPON = 2
     @@MAX_SHIELDS = 3
-    @@INITIAL_HEALTH = 1
+    @@INITIAL_HEALTH = 10
     @@HTIS2LOSE = 3
 
     @@NAME_DEFAULT = "Player"
