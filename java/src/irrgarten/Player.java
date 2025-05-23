@@ -119,13 +119,13 @@ public class Player extends LabyrinthCharacter {
     @Override
     public String toString() {
         String cad = super.toString();
-        cad += "\n\tWeapons: \n";
+        cad += "\n\tWeapons: ";
         for (int i = 0; i < weapons.size(); i++) {
-            cad += "\t\t" + weapons.get(i).toString() + "\n";
+            cad += "\t" + weapons.get(i).toString();
         }
-        cad += "\tShields: \n";
+        cad += "\n\tShields: ";
         for (int i = 0; i < shields.size(); i++) {
-            cad += "\t\t" + shields.get(i).toString() + "\n";
+            cad += "\t" + shields.get(i).toString();
         }
         return cad;
     }

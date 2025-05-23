@@ -49,7 +49,7 @@ public class GraphicUI extends javax.swing.JFrame implements UI {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         laberinto.setColumns(20);
-        laberinto.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        laberinto.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         laberinto.setRows(5);
         jScrollPane1.setViewportView(laberinto);
 

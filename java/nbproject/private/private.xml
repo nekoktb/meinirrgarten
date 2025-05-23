@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/carlos/meinirrgarten/java/src/irrgarten/Game.java</file>
-            <file>file:/home/carlos/meinirrgarten/java/src/irrgarten/TestP1.java</file>
-            <file>file:/home/carlos/meinirrgarten/java/src/irrgarten/UI/TextUI.java</file>
-            <file>file:/home/carlos/meinirrgarten/java/src/irrgarten/Controller/Controller.java</file>
-            <file>file:/home/carlos/meinirrgarten/java/src/irrgarten/Player.java</file>
-            <file>file:/home/carlos/meinirrgarten/java/src/irrgarten/Monster.java</file>
-            <file>file:/home/carlos/meinirrgarten/java/src/irrgarten/Labyrinth.java</file>
+            <file>file:/home/nekok/meinirrgarten/java/src/irrgarten/UI/TextUI.java</file>
+            <file>file:/home/nekok/meinirrgarten/java/src/irrgarten/Controller/Controller.java</file>
+            <file>file:/home/nekok/meinirrgarten/java/src/irrgarten/UI/Cursors.java</file>
+            <file>file:/home/nekok/meinirrgarten/java/src/irrgarten/TestP1.java</file>
+            <file>file:/home/nekok/meinirrgarten/java/src/irrgarten/UI/UI.java</file>
+            <file>file:/home/nekok/meinirrgarten/java/src/irrgarten/UI/GraphicUI.java</file>
         </group>
     </open-files>
 </project-private>
